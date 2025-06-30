@@ -169,449 +169,406 @@
             display: none; /* Hidden by default */
         }
 
-        /* Login Page Specific Styles */
-        #login-page {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #f1f3fa; /* Match body background */
-            z-index: 2000; /* Ensure it's on top */
-        }
         #main-content {
-            display: none; /* Hidden by default */
+            display: flex; /* Always display main content */
             flex-grow: 1; /* Allow main content to grow */
             flex-direction: column; /* Ensure header, main, footer stack */
         }
-        .login-card {
-            background-color: white;
-            padding: 2.5rem; /* p-10 */
-            border-radius: 1rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .login-card input {
-            width: 100%;
-            padding: 0.75rem 1rem; /* py-3 px-4 */
-            border: 1px solid #d1d5db; /* border-gray-300 */
-            border-radius: 0.5rem; /* rounded-lg */
-            margin-bottom: 1rem; /* mb-4 */
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s ease;
-        }
-        .login-card input:focus {
-            border-color: #4f46e5; /* indigo-500 */
-        }
-        .login-card button {
-            width: 100%;
-            padding: 0.75rem 1rem; /* py-3 px-4 */
-            background-color: #4f46e5; /* indigo-600 */
-            color: white;
-            font-weight: 600; /* font-semibold */
-            border-radius: 0.5rem; /* rounded-lg */
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            cursor: pointer;
-        }
-        .login-card button:hover {
-            background-color: #4338ca; /* indigo-700 */
-            transform: translateY(-1px);
-        }
-        #login-error-message {
-            color: #ef4444; /* red-500 */
-            margin-top: 1rem; /* mt-4 */
-            font-size: 0.875rem; /* text-sm */
-            display: none;
+
+        /* Style for hidden sections/products */
+        .hidden-section {
+            display: none !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- Login Page -->
-    <div id="login-page">
-        <div class="login-card">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Welcome Back!</h2>
-            <p class="text-gray-600 mb-6">Please enter your credentials to proceed.</p>
-            <input type="text" id="username" placeholder="Username" class="focus:border-indigo-500">
-            <input type="password" id="password" placeholder="Password" class="focus:border-indigo-500">
-            <button id="login-button">Login</button>
-            <p id="login-error-message">Invalid username or password.</p>
-        </div>
-    </div>
-
     <!-- Main Content of the Website -->
     <div id="main-content">
         <header class="w-full bg-blue-700 text-white p-4 text-center shadow-md">
-            <h1 class="text-xl sm:text-2xl font-bold">PG7 Market</h1>
-            <p class="text-md mt-1">Your one-stop shop for fresh beverages!</p>
+            <h1 class="text-xl sm:text-2xl font-bold">ភីជី៧ ម៉ាត (PG7 Market)</h1>
+            <p class="text-md mt-1">ហាងទំនិញគ្រប់មុខសម្រាប់ភេសជ្ជៈស្រស់ៗរបស់អ្នក!</p> <!-- Your one-stop shop for fresh beverages! -->
+            <!-- Search Bar -->
+            <div class="mt-4 flex justify-center">
+                <input type="text" id="search-input" placeholder="ស្វែងរកផលិតផល..." class="p-2 rounded-l-lg text-gray-800 w-1/2 md:w-1/3 focus:outline-none"> <!-- Search products... -->
+                <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg font-semibold transition-colors duration-300">
+                    ស្វែងរក
+                </button> <!-- Search -->
+            </div>
+            <!-- Navigation Buttons -->
+            <div class="mt-4 flex justify-center space-x-4">
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="showAllContent()">
+                    ទំព័រដើម
+                </button> <!-- Home -->
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('drink & beer')">
+                    ភេសជ្ជៈ
+                </button> <!-- Drink -->
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('vegetables')">
+                    បន្លែ
+                </button> <!-- Vegetables -->
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('meat')">
+                    សាច់
+                </button> <!-- Meat -->
+            </div>
+            <!-- End Navigation Buttons -->
         </header>
 
         <main class="flex-grow container mx-auto p-6 lg:p-8 max-w-6xl">
             <section class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
                 <div class="flex flex-col items-center justify-center mb-4">
-                    <img src="photo_2025-06-27_10-26-54.jpg" alt="PG7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4">
-                    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">Welcome To My Market</h2>
+                    <img src="photo_2025-06-27_10-26-54.jpg" alt="PG7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4 h-48 object-cover">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">សូមស្វាគមន៍មកកាន់ទីផ្សាររបស់ខ្ញុំ</h2> <!-- Welcome To My Market -->
                     <p class="text-gray-600 text-lg leading-relaxed mt-2">
-                        You Can Find Materials.
-                    </p>
+                        អ្នកអាចស្វែងរកទំនិញនៅទីនេះ។
+                    </p> <!-- You Can Find Materials. -->
                 </div>
                 <div class="mt-6">
                     <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        Find Now
-                    </button>
+                        ស្វែងរកឥឡូវនេះ
+                    </button> <!-- Find Now -->
                 </div>
             </section>
 
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center">Drink & Beer</h2>
-            <section class="product-grid-container">
+            <!-- Product Sections -->
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Drink & Beer">ភេសជ្ជៈ និងស្រាបៀរ</h2> <!-- Drink & Beer -->
+            <section class="product-grid-container" data-section-category="drink & beer">
+                
+  <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJpyvrfIXJN7qZkF8ooO5AWb0IfSDHs5Vhg&s" alt="Passion Fruit Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Passion Fruit Drink</h3>
+    <p class="text-gray-600 mb-4">ភេសជ្ជៈផ្លែដ៏បរិចរិត មានជាតិស្ករ និងផ្លែពោរពេញដោយក្ដារផ្លែ វិធីផ្សំច្រើនប្រភេទ៖ canned juice, sparkling water mix។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$1.40 </span>
+    <button onclick="openPaymentInputModal('1.42')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
+
+
+
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+    <img src="https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-98075.jpg" alt="Cold Brew Coffee" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cold Brew Coffee</h3>
+    <p class="text-gray-600 mb-4">កាហ្វេត្រជាក់ (cold brew) 100% Arabica, មាន caffeine 150‑200 mg ក្នុងកែវ 355 ml។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$2.99</span>
+    <button onclick="openPaymentInputModal('2.99')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
+            <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://www.starbucks.co.nz/content/menu/0591483001647828269.jpg" alt="POKKA Green Tea" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2"> Green Tea </h3>
+    <p class="text-gray-600 mb-4">តែបៃតងជំពាក់តិចស្ករ (~1.2 $), គ្រប់លក្ខណៈ ៣៦០ ml, បានលក់នៅកម្ពុជា</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$1.20</span>
+    <button onclick="openPaymentInputModal('1.20')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
+
+               <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://cdn.s-liquor.com.kh/sliquors3/wp-content/uploads/2020/07/Carabao.jpg?strip=all&lossy=1&webp=85&avif=80&ssl=1" alt="Carabao Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Carabao Energy Drink</h3>
+    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលនាំមកពីថៃ មាន 106 mg caffeine ក្នុង can 330 ml និង 15 g ស្ករ។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
+    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
+
+               <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                <img src="https://www.monde-selection.com/wp-content/uploads/2023/06/1040397.png" alt="Boostrong Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+                 <h3 class="text-xl font-semibold text-gray-800 mb-2">Boostrong Energy Drink</h3>
+                 <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលខ្មែរ ពោរពេញដោយ B‑vitamins, taurine និង caffeine សម្រាប់ផ្តល់ថាមពលខ្លាំង។</p>
+                <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
+                 <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    ទិញពេលនេះ
+                </button>
+             </div>
+                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://www.monde-selection.com/wp-content/uploads/2023/04/1039137.png" alt="Ize Cola" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Ize Cola</h3>
+    <p class="text-gray-600 mb-4">ភេសជ្ជៈកូឡាជាតិខ្មែរ មានជាតិស្ករច្រើនទាប  និង caffeine បញ្ចូលក្នុង carbonated water។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$0.50</span>
+    <button onclick="openPaymentInputModal('0.50')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
+
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://images.unsplash.com/photo-1494314671902-399b18174975?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="Green Tea" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Green Tea</h3>
-                    <p class="text-gray-600 mb-4">Refreshing green tea for a healthy lifestyle.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.00</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('2.00')">
-                        Buy Now
-                    </button>
+                    <img src="https://s3.ap-southeast-1.wasabisys.com/sliquors3/wp-content/uploads/2020/07/Red-Bull-250ml-01.png" alt="Red Bull Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Red Bull Energy Drink</h3> <!-- Grape Juice -->
+                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលទ្រង់ទ្រាយម៉ოსខេត្តស្ករនិងដែកសារធាតុ B‑vitamins ទឹកកក និង taurine។</p> <!-- Delicious and refreshing grape juice, a taste of natural goodness. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://www.americanolounge.com/wp-content/uploads/2024/08/What-is-American-style-coffee_270222935.webp" alt="Coffee" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Coffee</h3>
-                    <p class="text-gray-600 mb-4">A rich and aromatic coffee to start your day.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.19</span>
-                    <button onclick="openABAModal('2.19')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
+                    <img src="https://www.championgroup.com.kh/wp-content/uploads/2025/05/champion-Green-768x768.png" alt="Champion Green Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Champion Green Energy Drink</h3> <!-- Milk -->
+                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលបៃតងថ្មីពី Champion Group ប្រើបច្ចេកវិទ្យាជាតិក្រុមសហព័ន្ធអ៊ឺរ៉ុប។</p> <!-- Fresh and nutritious milk. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://dailyappetite.com/wp-content/uploads/2018/03/coconut-crush-735x933.jpg" alt="Coconut Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Coconut Drink</h3>
-                    <p class="text-gray-600 mb-4">Fresh and hydrating coconut water.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.50</span>
-                    <button onclick="openABAModal('1.50')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
+                    <img src="https://cdn.s-liquor.com.kh/sliquors3/wp-content/uploads/2022/11/Sting.jpg?strip=all&lossy=1&webp=85&avif=80&ssl=1" alt="Sting Red (Strawberry)" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sting Red (Strawberry)</h3> <!-- Cambodia Water -->
+                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលរសជាតិស្ត្របឺរី មាន caffeine ប្រហែល 72 mg/250 ml និងត្រាំតែមធ្យម។</p> <!-- Fresh and hydrating Cambodian water. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://images.albertsons-media.com/is/image/ABS/120020370-C1N1?$ng-ecom-pdp-desktop$&defaultImage=Not_Available" alt="Apple Juice" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Apple Juice</h3>
-                    <p class="text-gray-600 mb-4">Fresh and hydrating apple juice.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.65</span>
-                    <button onclick="openABAModal('1.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMuzYGVMn8fyIBX20noPAtO_v0cuFYks0P5A&sg" alt="Wurkz Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Wurkz Energy Drink</h3> <!-- Ganzberg Beer -->
+                    <p class="text-gray-600 mb-4">ផលិតផលមីណ្ឌមកពីកម្ពុជាដែលបានទទួល Gold និង Silver Award ពី Monde Selection ជាមួយ B‑vitamins ទាំងឡាយ។</p> <!-- Crisp and refreshing Ganzberg beer. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <button onclick="openPaymentInputModal('10.659')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
+                </div>  <!-- Krud Energy Drink -->
+  <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://www.monde-selection.com/wp-content/uploads/2023/04/1039997.png" alt="Krud Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Krud Energy Drink</h3>
+    <p class="text-gray-600 mb-4">ស្រស់ប្លែក និងផ្តល់ថាមពលបរិច្ច័យ។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/08/orange-juice-732x549-thumbnail.jpg" alt="Orange Juice" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Orange Juice</h3>
-                    <p class="text-gray-600 mb-4">Fresh and hydrating orange juice.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.70</span>
-                    <button onclick="openABAModal('1.70')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
+  <!-- Vigor Power Energy Drink -->
+  <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://www.drgcambodia.com/wp-content/uploads/2021/11/vigor-power-energy-drink-cambodia.jpg" alt="Vigor Power Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">Vigor Power Energy Drink</h3>
+    <p class="text-gray-600 mb-4">ផ្ដល់ថាមពលលឿន និងសារ៉ាប់សារ។</p>
+    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
+    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+      ទិញពេលនេះ
+    </button>
+  </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLtvLHrBkRoiTQRJ0xhbSCCei7LjrZiECJXw&s" alt="Pomegranate Juice" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pomegranate Juice</h3>
-                    <p class="text-gray-600 mb-4">Fresh and hydrating pomegranate juice.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.75</span>
-                    <button onclick="openABAModal('1.75')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2yI0cnnn56XVeLiNe-n8BMskcjZ4Ob12oiQ&s" alt="Grape Juice" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Grape Juice</h3>
-                    <p class="text-gray-600 mb-4">Delicious and refreshing grape juice, a taste of natural goodness.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.75</span>
-                    <button onclick="openABAModal('2.75')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLYLrpcL-2TKZDY0eljDthboDPMytCCRgVg&s" alt="Milk" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Milk</h3>
-                    <p class="text-gray-600 mb-4">Fresh and nutritious milk.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.38</span>
-                    <button onclick="openABAModal('2.38')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://camhappymart.com/storage/app/public/product/2024-05-09-663c951648957.webp" alt="Cambodia Water" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cambodia Water</h3>
-                    <p class="text-gray-600 mb-4">Fresh and hydrating Cambodian water.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$5.30</span>
-                    <button onclick="openABAModal('5.30')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://media.makrocambodiaclick.com/PRODUCT_1591069555924.png" alt="Ganzberg Beer" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Ganzberg Beer</h3>
-                    <p class="text-gray-600 mb-4">Crisp and refreshing Ganzberg beer.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$14.99</span>
-                    <button onclick="openABAModal('14.99')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/products/20240523/1716454257-8847100740144.jpg" alt="Cambodia Beer" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cambodia Beer</h3>
-                    <p class="text-gray-600 mb-4">A popular local Cambodian beer.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$15.99</span>
-                    <button onclick="openABAModal('15.99')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://cdn.s-liquor.com.kh/sliquors3/wp-content/uploads/2021/10/Hanuman-Premium-Lager-Can-NCP-330ml.jpg?strip=all&lossy=1&webp=85&avif=80&ssl=1" alt="Hanuman Beer" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Hanuman Beer</h3>
-                    <p class="text-gray-600 mb-4">Premium Hanuman Lager beer.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$15.50</span>
-                    <button onclick="openABAModal('15.50')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        Buy Now
-                    </button>
-                </div>
             </section>
 
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center">Vegetables</h2>
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Vegetables">បន្លែ</h2> <!-- Vegetables -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="vegetables">
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_IjOiPxkpz-0V9UCzKmAZae1EFiGsYd5RA&s" alt="Broccoli" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Fresh Broccoli</h3>
-                    <p class="text-gray-600 mb-4">Locally sourced, organic broccoli, great for steaming or stir-fries.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្កាខាត់ណាខៀវស្រស់</h3> <!-- Fresh Broccoli -->
+                    <p class="text-gray-600 mb-4">ផ្កាខាត់ណាខៀវក្នុងស្រុក សរីរាង្គ ល្អសម្រាប់ចំហុយ ឬឆា។</p> <!-- Locally sourced, organic broccoli, great for steaming or stir-fries. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.99 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('3.99')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.99')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://5.imimg.com/data5/EX/PC/MY-51545753/selection_587.png" alt="Carrots" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Crisp Carrots</h3>
-                    <p class="text-gray-600 mb-4">Sweet and crunchy carrots, perfect for snacking or cooking.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ការ៉ុតស្រស់</h3> <!-- Crisp Carrots -->
+                    <p class="text-gray-600 mb-4">ការ៉ុតផ្អែម និងស្រួយ ល្អឥតខ្ចោះសម្រាប់ញ៉ាំ ឬចម្អិន។</p> <!-- Sweet and crunchy carrots, perfect for snacking or cooking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.50')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://cdn.shopify.com/s/files/1/0824/4857/files/spinach_large.jpg?v=1490961229" alt="Spinach" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Organic Spinach</h3>
-                    <p class="text-gray-600 mb-4">Fresh, nutrient-rich spinach leaves for your salads and meals.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃខ្មៅសរីរាង្គ</h3> <!-- Organic Spinach -->
+                    <p class="text-gray-600 mb-4">ស្លឹកស្ពៃខ្មៅស្រស់ សម្បូរជីវជាតិសម្រាប់សាឡាដ និងអាហាររបស់អ្នក។</p> <!-- Fresh, nutrient-rich spinach leaves for your salads and meals. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.50 / bunch</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('0.50')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('0.50')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://bjs.scene7.com/is/image/bjs/15571?$bjs-Initial600$" alt="Cabbage" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cabbage</h3>
-                    <p class="text-gray-600 mb-4">Versatile and fresh cabbage, perfect for coleslaw or stir-fries.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃក្តោប</h3> <!-- Cabbage -->
+                    <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <!-- Versatile and fresh cabbage, perfect for coleslaw or stir-fries. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / head</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.50')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/07/Chinese-eggplant-shutterstock_2033421.jpg" alt="Eggplant" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Eggplant</h3>
-                    <p class="text-gray-600 mb-4">Smooth and tender eggplant, great for grilling or baking.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រប់</h3> <!-- Eggplant -->
+                    <p class="text-gray-600 mb-4">ត្រប់ទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់ដុត ឬដុតនំ។</p> <!-- Smooth and tender eggplant, great for grilling or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.75')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.75')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.telegraph.co.uk/content/dam/briefs/2025/04/30/TELEMMGLPICT000421134667_17460223214200_trans_NvBQzQNjv4BqNJ-LQvq2P5DIswYl2XeNFI064TIrcX_7tT0sGCZw0_A.jpeg?imwidth=640" alt="Potato" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Potato</h3>
-                    <p class="text-gray-600 mb-4">Versatile potatoes, perfect for mashing, baking, or frying.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ដំឡូងបារាំង</h3> <!-- Potato -->
+                    <p class="text-gray-600 mb-4">ដំឡូងបារាំងចម្រុះ ល្អឥតខ្ចោះសម្រាប់បុក ដុតនំ ឬចៀន។</p> <!-- Versatile potatoes, perfect for mashing, baking, or frying. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('3.50')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.50')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://seedsofplenty.com.au/cdn/shop/products/V-OTH-01p1_grande.jpg?v=1670214705" alt="Parsnip" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Parsnip</h3>
-                    <p class="text-gray-600 mb-4">Sweet and earthy parsnips, ideal for roasting or stews.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផាសនីប</h3> <!-- Parsnip -->
+                    <p class="text-gray-600 mb-4">ផាសនីបផ្អែម និងមានរសជាតិដី ល្អសម្រាប់អាំង ឬស្ងោរ។</p> <!-- Sweet and earthy parsnips, ideal for roasting or stews. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.29 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.29')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.29')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT19UUTLodCwKT1sEjgfdbWn8WLfiJ3D2d4Q&s" alt="Cucumber" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cucumber</h3>
-                    <p class="text-gray-600 mb-4">Crisp and refreshing cucumbers, perfect for salads and snacks.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រសក់</h3> <!-- Cucumber -->
+                    <p class="text-gray-600 mb-4">ត្រសក់ស្រស់ និងស្រួយ ល្អឥតខ្ចោះសម្រាប់សាឡាដ និងអាហារសម្រន់។</p> <!-- Crisp and refreshing cucumbers, perfect for salads and snacks. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.20')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.20')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.lovefoodhatewaste.com/sites/default/files/styles/twitter_card_image/public/2022-07/Mushroom-sh1679028943.jpg.webp?itok=EPN3UR3M" alt="Mushroom" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Mushroom</h3>
-                    <p class="text-gray-600 mb-4">Fresh and flavorful mushrooms, great for adding to any dish.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្សិត</h3> <!-- Mushroom -->
+                    <p class="text-gray-600 mb-4">ផ្សិតស្រស់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់បន្ថែមទៅក្នុងមុខម្ហូបណាមួយ។</p> <!-- Fresh and flavorful mushrooms, great for adding to any dish. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('2.55')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('2.55')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.jiomart.com/images/product/original/590003531/ginger-indian-200-g-product-images-o590003531-p590003531-1-202408070949.jpg?im=Resize=(420,420)" alt="Ginger" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Ginger</h3>
-                    <p class="text-gray-600 mb-4">Aromatic and zesty ginger, perfect for cooking or tea.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ញី</h3> <!-- Ginger -->
+                    <p class="text-gray-600 mb-4">ខ្ញីក្រអូប និងមានរសជាតិហឹរ ល្អឥតខ្ចោះសម្រាប់ចម្អិនអាហារ ឬតែ។</p> <!-- Aromatic and zesty ginger, perfect for cooking or tea. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.40 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.40')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.40')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.shutterstock.com/image-photo/sweet-pepper-red-green-yellow-260nw-1493482298.jpg" alt="Pepper" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Bell Pepper</h3>
-                    <p class="text-gray-600 mb-4">Colorful and sweet bell peppers, ideal for stir-fries and salads.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ម្ទេសប្លោក</h3> <!-- Bell Pepper -->
+                    <p class="text-gray-600 mb-4">ម្ទេសប្លោកចម្រុះពណ៌ និងផ្អែម ល្អសម្រាប់ឆា និងសាឡាដ។</p> <!-- Colorful and sweet bell peppers, ideal for stir-fries and salads. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('2.55')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('2.55')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZYT1tOS5o7hV4hje57tDhYLYd-f6WwZdDpg&s" alt="Sliced Papaya" class="rounded-lg mb-4 w-full h-48 object-cover">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Ripe Papaya Slices</h3>
-                <p class="text-gray-600 mb-4">Ready-to-eat sweet papaya slices, rich in vitamins.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">ចំណិតល្ហុងទុំ</h3> <!-- Ripe Papaya Slices -->
+                <p class="text-gray-600 mb-4">ចំណិតល្ហុងទុំស្រស់ៗ ងាយស្រួលញ៉ាំ សម្បូរវីតាមីន។</p> <!-- Ready-to-eat sweet papaya slices, rich in vitamins. -->
                 <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('1.20')">
-                    Buy Now
-                </button>
+                <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.20')">
+                    ទិញឥឡូវនេះ
+                </button> <!-- Buy Now -->
             </div>
             </section>
 
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center">Meat</h2>
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Meat">សាច់</h2> <!-- Meat -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="meat">
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://fgtp.com.au/cdn/shop/products/breasts.jpg?v=1581232402" alt="Chicken Breast" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Chicken Breast</h3>
-                    <p class="text-gray-600 mb-4">Fresh, lean chicken breast, perfect for grilling or baking.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ទ្រូងមាន់</h3> <!-- Chicken Breast -->
+                    <p class="text-gray-600 mb-4">សាច់ទ្រូងមាន់ស្រស់ គ្មានខ្លាញ់ ល្អឥតខ្ចោះសម្រាប់អាំង ឬដុតនំ។</p> <!-- Fresh, lean chicken breast, perfect for grilling or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$5.99 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('5.99')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('5.99')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKCJc_SGMj6gJNGa596a0I-p-ZAg5oXVDA0g&s" alt="Beef Steak" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Beef Steak</h3>
-                    <p class="text-gray-600 mb-4">Tender and flavorful beef steak, ideal for a hearty meal.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់គោអាំង</h3> <!-- Beef Steak -->
+                    <p class="text-gray-600 mb-4">សាច់គោអាំងទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់អាហារដ៏ឈ្ងុយឆ្ងាញ់។</p> <!-- Tender and flavorful beef steak, ideal for a hearty meal. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$12.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('12.50')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('12.50')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.lovefoodhatewaste.com/sites/default/files/styles/16_9_two_column/public/2022-08/Pork-sh1419942758.jpg.webp?itok=_Ow0IXe6" alt="Pork Chops" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pork Chops</h3>
-                    <p class="text-gray-600 mb-4">Juicy pork chops, perfect for pan-frying or baking.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ជ្រូក</h3> <!-- Pork Chops -->
+                    <p class="text-gray-600 mb-4">សាច់ជ្រូក juicy ល្អឥតខ្ចោះសម្រាប់ចៀន ឬដុតនំ។</p> <!-- Juicy pork chops, perfect for pan-frying or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$8.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('8.75')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('8.75')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.wildmeat.co.uk/cdn/shop/files/VenisonShoulder.jpg?v=1725441783" alt="Venison" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Venison</h3>
-                    <p class="text-gray-600 mb-4">Rich and tender venison, a healthy red meat alternative.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់សត្វក្តាន់</h3> <!-- Venison -->
+                    <p class="text-gray-600 mb-4">សាច់សត្វក្តាន់សម្បូរបែប និងទន់ ជាជម្រើសសាច់ក្រហមដែលមានសុខភាពល្អ។</p> <!-- Rich and tender venison, a healthy red meat alternative. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$7.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('7.75')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('7.75')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.tastingtable.com/img/gallery/x-facts-you-need-to-know-about-horse-meat/l-intro-1682612005.jpg" alt="Horse Meat" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Horse Meat</h3>
-                    <p class="text-gray-600 mb-4">Lean and flavorful horse meat, a unique culinary experience.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់សេះ</h3> <!-- Horse Meat -->
+                    <p class="text-gray-600 mb-4">សាច់សេះគ្មានខ្លាញ់ និងមានរសជាតិឆ្ងាញ់ ជាបទពិសោធន៍ធ្វើម្ហូបដ៏ប្លែក។</p> <!-- Lean and flavorful horse meat, a unique culinary experience. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$16.70 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('16.70')">
-                        Buy Now
-                    </button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('16.70')">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL8GuhhPq8kesg3FHphGx4sOIzwR0Vu1Ffew&s" alt="Duck Meat" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Duck Meat</h3>
-                    <p class="text-gray-600 mb-4">Rich and succulent duck meat, ideal for roasting or confit.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ទា</h3> <!-- Duck Meat -->
+                    <p class="text-gray-600 mb-4">សាច់ទាសម្បូរបែប និងមានជាតិទឹក ល្អសម្រាប់អាំង ឬ confit។</p> <!-- Rich and succulent duck meat, ideal for roasting or confit. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.00 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('3.00')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('3.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://www.blackwing.com/media/catalog/product/cache/29b2fea946c2ffd4db71e17dc9a6568b/w/h/whole-rabbit.jpg" alt="Rabbit" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Rabbit</h3>
-                    <p class="text-gray-600 mb-4">Tender and delicate rabbit meat, perfect for stews or roasts.</p>
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$15.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('15.75')">
-                        Buy Now
-                    </button>
-                </div>
+                
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa1V9HEax-wH4PXEZkv4d7ikZ4rebaqRsFiw&s" alt="Mutton" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Mutton</h3>
-                    <p class="text-gray-600 mb-4">Flavorful and robust mutton, great for curries and slow cooking.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ចៀម</h3> <!-- Mutton -->
+                    <p class="text-gray-600 mb-4">សាច់ចៀមមានរសជាតិឆ្ងាញ់ និងរឹងមាំ ល្អសម្រាប់គុយរី និងចម្អិនយឺត។</p> <!-- Flavorful and robust mutton, great for curries and slow cooking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$25.00 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('25.00')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('25.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://cdn.shopify.com/s/files/1/1785/5627/files/how_to_cook_chevon_meat_1000x.jpg?v=1746409358" alt="Chevon Meat" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Chevon Meat</h3>
-                    <p class="text-gray-600 mb-4">Tender goat meat, excellent for a variety of dishes.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ពពែ</h3> <!-- Chevon Meat -->
+                    <p class="text-gray-600 mb-4">សាច់ពពែទន់ ល្អឥតខ្ចោះសម្រាប់មុខម្ហូបជាច្រើនប្រភេទ។</p> <!-- Tender goat meat, excellent for a variety of dishes. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$30.00 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('30.00')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('30.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2XWDHTwO893PDZvOKCieXuaJS9CGzCUE8VA&s" alt="Fish Meat" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Fish Meat</h3>
-                    <p class="text-gray-600 mb-4">Fresh and healthy fish fillets, perfect for any seafood recipe.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ត្រី</h3> <!-- Fish Meat -->
+                    <p class="text-gray-600 mb-4">សាច់ត្រីស្រស់ និងមានសុខភាពល្អ ល្អឥតខ្ចោះសម្រាប់មុខម្ហូបគ្រឿងសមុទ្រណាមួយ។</p> <!-- Fresh and healthy fish fillets, perfect for any seafood recipe. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('2.75')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('2.75')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://allfreshseafood.com/cdn/shop/products/lobster-meat-plate-33415076.jpg?v=1657913295" alt="Lobster Meat" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Lobster Meat</h3>
-                    <p class="text-gray-600 mb-4">Luxurious and tender lobster meat, a true delicacy.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់បង្កង</h3> <!-- Lobster Meat -->
+                    <p class="text-gray-600 mb-4">សាច់បង្កងដ៏ប្រណិត និងទន់ ជាអាហារឆ្ងាញ់ពិតប្រាកដ។</p> <!-- Luxurious and tender lobster meat, a true delicacy. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$6.39 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('6.39')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('6.39')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkQRXgQ-ju6hMaKwVYhzWGOMyNneVcWzlJ6A&s" alt="Sea Crab" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sea Crab</h3>
-                    <p class="text-gray-600 mb-4">Fresh sea crab, perfect for a seafood feast.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ក្តាមសមុទ្រ</h3> <!-- Sea Crab -->
+                    <p class="text-gray-600 mb-4">ក្តាមសមុទ្រស្រស់ ល្អឥតខ្ចោះសម្រាប់ពិធីជប់លៀងគ្រឿងសមុទ្រ។</p> <!-- Fresh sea crab, perfect for a seafood feast. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$15.25 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openABAModal('15.25')">
-                        Buy Now
-                    </button>
+                    <button onclick="openPaymentInputModal('15.25')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
                 </div>
             </section>
         </main>
@@ -620,115 +577,140 @@
             <div id="abaKhqrModalContent" class="modal-content">
                 <button class="modal-close-button" onclick="closeABAModal()">&times;</button>
 
-                <h2 class="aba-khqr-header">KHQR</h2>
-
-                <p id="paymentStatusMessage" class="text-green-600 text-lg font-semibold hidden">Done You ready the pay money</p>
-
-                <p id="modalAmount" class="aba-khqr-amount">0.00 USD</p>
-
-                <div class="aba-khqr-qr-container">
-                   <img src="photo_2025-06-27_10-14-51.jpg" alt="KHQR Code" onerror="this.onerror=null;this.src='https://placehold.co/250x250/000000/ffffff?text=Error+Loading+QR';">
+                <!-- Step 1: Phone and Location Input -->
+                <div id="paymentInputSection" class="p-4">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">បញ្ចូលព័ត៌មានទំនាក់ទំនង</h2> <!-- Enter Contact Information -->
+                    <div class="mb-4">
+                        <label for="phoneNumberInput" class="block text-gray-700 text-sm font-bold mb-2">លេខទូរស័ព្ទ:</label> <!-- Phone Number: -->
+                        <input type="tel" id="phoneNumberInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="បញ្ចូលលេខទូរស័ព្ទ"> <!-- Example: 012 345 678 -->
+                    </div>
+                    <div class="mb-6">
+                        <label for="locationInput" class="block text-gray-700 text-sm font-bold mb-2">ទីតាំង:</label> <!-- Location: -->
+                        <input type="text" id="locationInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="ទីតាង: ភូមិ​ ឃុំ ស្រុក ខេត្ត"> <!-- Example: Village, Commune, District, Province -->
+                    </div>
+                    <button id="continueToQrButton" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        បន្តទៅ QR Code
+                    </button> <!-- Continue to QR Code -->
                 </div>
 
-                <p class="aba-khqr-instructions">
-                    ស្កេនទូទាត់តាម AC Mobile ឬ កម្មវិធីធនាគារ សមាជិក KHQR
-                    <br>
-                    (Scan to pay via AC Mobile or KHQR Member Bank App)
-                </p>
+                <!-- Step 2: QR Code Display (Initially hidden) -->
+                <div id="qrCodeSection" class="hidden">
+                    <h2 class="aba-khqr-header">ឃ្យូអរកូដ (KHQR)</h2> <!-- KHQR -->
+                    <p id="paymentStatusMessage" class="text-green-600 text-lg font-semibold hidden">រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ</p> <!-- Done You ready the pay money -->
 
-                <button class="aba-khqr-print-button" onclick="simulatePaymentAndPrint()">
-                    Confirm Payment & Print Receipt
-                </button>
+                    <p class="aba-khqr-info">
+                        <span class="font-semibold">លេខទូរស័ព្ទ:</span> <span id="displayPhoneNumber"></span>
+                    </p>
+                    <p class="aba-khqr-info">
+                        <span class="font-semibold">ទីតាំង:</span> <span id="displayLocation"></span>
+                    </p>
+
+                    <p id="modalAmount" class="aba-khqr-amount">0.00 ដុល្លារ</p> <!-- 0.00 USD -->
+
+                    <div class="aba-khqr-qr-container">
+                       <img src="photo_2025-06-27_10-14-51.jpg" alt="KHQR Code" onerror="this.onerror=null;this.src='https://placehold.co/250x250/000000/ffffff?text=Error+Loading+QR';">
+                    </div>
+
+                 
+
+                    <button class="aba-khqr-print-button" onclick="simulatePaymentAndPrint()">
+                        បញ្ជាក់ការទូទាត់ & បោះពុម្ពបង្កាន់ដៃ
+                    </button> <!-- Confirm Payment & Print Receipt -->
+                </div>
             </div>
         </div>
 
         <footer class="bg-gray-800 text-white p-6 mt-8 rounded-t-xl shadow-inner w-full">
             <div class="container mx-auto text-center">
-                <p class="text-sm">&copy; 2025 PG7 Market. All rights reserved.</p>
+                <p class="text-sm">&copy; 2025 ភីជី៧ ម៉ាត (PG7 Market). រក្សាសិទ្ធិគ្រប់យ៉ាង។</p> <!-- &copy; 2025 PG7 Market. All rights reserved. -->
                 <div class="flex justify-center space-x-6 mt-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">FAQs</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">គោលការណ៍ឯកជនភាព</a> <!-- Privacy Policy -->
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">លក្ខខណ្ឌប្រើប្រាស់</a> <!-- Terms of Service -->
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">សំណួរគេសួរញឹកញាប់</a> <!-- FAQs -->
                 </div>
             </div>
         </footer>
     </div> <!-- End of main-content -->
 
     <script>
-        // --- Login Logic ---
-        const loginPage = document.getElementById('login-page');
-        const mainContent = document.getElementById('main-content');
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const loginButton = document.getElementById('login-button');
-        const loginErrorMessage = document.getElementById('login-error-message');
+        // Global variable to store the current amount
+        let currentPaymentAmount = 0;
 
-        // Hardcoded credentials for demonstration
-        const CORRECT_USERNAME = 'user123';
-        const CORRECT_PASSWORD = 'password123';
-
-        loginButton.addEventListener('click', () => {
-            const enteredUsername = usernameInput.value;
-            const enteredPassword = passwordInput.value;
-
-            if (enteredUsername === CORRECT_USERNAME && enteredPassword === CORRECT_PASSWORD) {
-                // Successful login
-                loginPage.style.display = 'none'; // Hide login page
-                mainContent.style.display = 'flex'; // Show main content
-                loginErrorMessage.style.display = 'none'; // Hide error message
-            } else {
-                // Failed login
-                loginErrorMessage.style.display = 'block'; // Show error message
-            }
-        });
-
-        // Optional: Allow pressing Enter to login
-        passwordInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                loginButton.click();
-            }
-        });
-        usernameInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                passwordInput.focus(); // Move focus to password
-            }
-        });
-
-        // --- Existing Modal Logic (Copied from your original file) ---
+        // Get references to the new sections and elements
         const abaKhqrModalOverlay = document.getElementById('abaKhqrModalOverlay');
         const modalAmountDisplay = document.getElementById('modalAmount');
         const paymentStatusMessage = document.getElementById('paymentStatusMessage');
+        const paymentInputSection = document.getElementById('paymentInputSection');
+        const qrCodeSection = document.getElementById('qrCodeSection');
+        const phoneNumberInput = document.getElementById('phoneNumberInput');
+        const locationInput = document.getElementById('locationInput');
+        const continueToQrButton = document.getElementById('continueToQrButton');
+        const displayPhoneNumber = document.getElementById('displayPhoneNumber');
+        const displayLocation = document.getElementById('displayLocation');
 
         /**
-         * Opens the ABA KHQR modal and sets the payment amount.
-         * Resets the payment status message to hidden.
-         * @param {string | number} amount - The amount to display in the modal.
-         * It can be a string (from HTML onclick) or a number.
+         * Opens the initial payment input modal.
+         * This function is called when a product's "Buy Now" button is clicked.
+         * @param {string | number} amount - The amount to be paid.
          */
-        function openABAModal(amount) {
-            // Convert amount to a number if it's a string
-            const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+        function openPaymentInputModal(amount) {
+            currentPaymentAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
 
-            // Check if conversion resulted in a valid number
-            if (isNaN(numericAmount)) {
-                console.error('Invalid amount provided to openABAModal:', amount);
-                modalAmountDisplay.textContent = 'N/A USD'; // Display an error or default
-            } else {
-                modalAmountDisplay.textContent = `${numericAmount.toFixed(2)} USD`;
-            }
+            // Reset input fields
+            phoneNumberInput.value = '';
+            locationInput.value = '';
 
-            // Hide any previous payment status message when opening the modal
+            // Hide QR section, show input section
+            qrCodeSection.classList.add('hidden');
+            paymentInputSection.classList.remove('hidden');
+
+            // Hide any previous payment status message
             paymentStatusMessage.classList.add('hidden');
 
-            // Display the modal with the 'show' class for transition
+            // Display the modal overlay
             abaKhqrModalOverlay.classList.add('show');
         }
 
         /**
-         * Closes the ABA KHQR modal.
+         * Shows the QR code section of the modal after input is provided.
+         * This function is called when the "Continue to QR Code" button is clicked.
+         * @param {string} phone - The phone number entered by the user.
+         * @param {string} location - The location entered by the user.
+         */
+        function showQrCodeModal(phone, location) {
+            if (isNaN(currentPaymentAmount)) {
+                console.error('Invalid amount for QR code display.');
+                modalAmountDisplay.textContent = 'N/A ដុល្លារ';
+            } else {
+                modalAmountDisplay.textContent = `${currentPaymentAmount.toFixed(2)} ដុល្លារ`;
+            }
+
+            displayPhoneNumber.textContent = phone;
+            displayLocation.textContent = location;
+
+            // Hide input section, show QR section
+            paymentInputSection.classList.add('hidden');
+            qrCodeSection.classList.remove('hidden');
+        }
+
+        // Event listener for the "Continue to QR Code" button
+        continueToQrButton.addEventListener('click', () => {
+            const phoneNumber = phoneNumberInput.value.trim();
+            const location = locationInput.value.trim();
+
+            if (phoneNumber === '' || location === '') {
+                // Using a custom message box would be better than alert() in a real app
+                alert('សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងរបស់អ្នក។'); // Please enter your phone number and location.
+                return;
+            }
+
+            showQrCodeModal(phoneNumber, location);
+        });
+
+        /**
+         * Closes the entire ABA KHQR modal.
          */
         function closeABAModal() {
-            // Hide the modal by removing the 'show' class
             abaKhqrModalOverlay.classList.remove('show');
         }
 
@@ -739,7 +721,7 @@
          */
         function simulatePaymentAndPrint() {
             // Show payment confirmed message with "Done You ready the pay money"
-            paymentStatusMessage.textContent = 'Done You ready the pay money';
+            paymentStatusMessage.textContent = 'រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ'; // Translated
             paymentStatusMessage.classList.remove('hidden');
 
             // Introduce a small delay (e.g., 500 milliseconds) before printing
@@ -762,6 +744,150 @@
                 closeABAModal();
             }
         });
+
+        // --- Enhanced Search Functionality ---
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        // Select all h2 elements with data-section-heading and all section elements with data-section-category
+        const allContentElements = document.querySelectorAll('h2[data-section-heading], section[data-section-category]');
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+
+            allContentElements.forEach(element => {
+                const isHeading = element.tagName === 'H2';
+                let sectionContainer;
+                let headingElement;
+
+                if (isHeading) {
+                    headingElement = element;
+                    sectionContainer = element.nextElementSibling; // The section div/grid after the heading
+                } else {
+                    sectionContainer = element;
+                    headingElement = element.previousElementSibling; // The h2 before the section
+                }
+
+                let sectionShouldBeVisible = false;
+                let anyProductMatches = false;
+
+                if (query === '') {
+                    // If query is empty, show everything
+                    if (headingElement) headingElement.classList.remove('hidden-section');
+                    if (sectionContainer) {
+                        sectionContainer.classList.remove('hidden-section');
+                        // Ensure all products within are also visible
+                        sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
+                            product.style.display = 'flex';
+                        });
+                    }
+                    return; // Move to the next element
+                }
+
+                // Check if the section heading itself matches the query
+                if (headingElement && headingElement.textContent.toLowerCase().includes(query)) {
+                    sectionShouldBeVisible = true;
+                }
+
+                // Check products within the section
+                if (sectionContainer) {
+                    const products = sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md');
+                    products.forEach(product => {
+                        const productName = product.querySelector('h3').textContent.toLowerCase();
+                        const productDescription = product.querySelector('p').textContent.toLowerCase();
+
+                        if (productName.includes(query) || productDescription.includes(query)) {
+                            product.style.display = 'flex'; // Show product
+                            anyProductMatches = true;
+                        } else {
+                            product.style.display = 'none'; // Hide product
+                        }
+                    });
+                }
+
+                // A section (and its heading) is visible if its heading matches OR if any of its products match
+                if (sectionShouldBeVisible || anyProductMatches) {
+                    if (headingElement) headingElement.classList.remove('hidden-section');
+                    if (sectionContainer) sectionContainer.classList.remove('hidden-section');
+                } else {
+                    if (headingElement) headingElement.classList.add('hidden-section');
+                    if (sectionContainer) sectionContainer.classList.add('hidden-section');
+                }
+            });
+        }
+
+        // --- New Navigation Button Functions ---
+
+        /**
+         * Shows all product sections and products.
+         */
+        function showAllContent() {
+            document.getElementById('search-input').value = ''; // Clear search input
+            allContentElements.forEach(element => {
+                const isHeading = element.tagName === 'H2';
+                let sectionContainer;
+                let headingElement;
+
+                if (isHeading) {
+                    headingElement = element;
+                    sectionContainer = element.nextElementSibling;
+                } else {
+                    sectionContainer = element;
+                    headingElement = element.previousElementSibling;
+                }
+
+                if (headingElement) headingElement.classList.remove('hidden-section');
+                if (sectionContainer) {
+                    sectionContainer.classList.remove('hidden-section');
+                    sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
+                        product.style.display = 'flex'; // Ensure all products are visible
+                    });
+                }
+            });
+        }
+
+        /**
+         * Filters content to show only a specific category.
+         * @param {string} category - The data-section-category value to show.
+         */
+        function filterByCategory(category) {
+            document.getElementById('search-input').value = ''; // Clear search input
+            allContentElements.forEach(element => {
+                const isHeading = element.tagName === 'H2';
+                let sectionContainer;
+                let headingElement;
+
+                if (isHeading) {
+                    headingElement = element;
+                    sectionContainer = element.nextElementSibling;
+                } else {
+                    sectionContainer = element;
+                    headingElement = element.previousElementSibling;
+                }
+
+                const currentCategory = sectionContainer ? sectionContainer.getAttribute('data-section-category') : '';
+
+                if (currentCategory === category) {
+                    if (headingElement) headingElement.classList.remove('hidden-section');
+                    if (sectionContainer) {
+                        sectionContainer.classList.remove('hidden-section');
+                        // Ensure all products within the selected category are visible
+                        sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
+                            product.style.display = 'flex';
+                        });
+                    }
+                } else {
+                    if (headingElement) headingElement.classList.add('hidden-section');
+                    if (sectionContainer) sectionContainer.classList.add('hidden-section');
+                }
+            });
+        }
     </script>
 </body>
 </html>
