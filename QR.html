@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code for PG7 Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- qrcode.js library for generating QR codes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode.js/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f3fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .qr-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .qr-container {
+            position: relative;
+            width: 250px; /* Desired QR code width */
+            height: 250px; /* Desired QR code height */
+            margin: 20px auto;
+            border: 1px solid #eee;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex; /* To center the canvas */
+            justify-content: center;
+            align-items: center;
+        }
+        .qr-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block; /* Remove extra space below canvas */
+        }
+        .qr-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; /* Adjust logo size relative to QR code */
+            height: 60px; /* Adjust logo size relative to QR code */
+            object-fit: contain;
+            background-color: white; /* Ensures logo stands out against QR */
+            border-radius: 8px; /* Optional: slight rounded corners for the logo */
+            padding: 5px; /* Add some padding around the logo */
+        }
+        .qr-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .qr-description {
+            color: #555;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="qr-card">
+        <h1 class="qr-title">ស្កេនដើម្បីចូលទៅកាន់គេហទំព័រ PG7 Market</h1> <!-- Scan to access PG7 Market website -->
+        <p class="qr-description">ប្រើកម្មវិធីស្កេន QR ណាមួយដើម្បីចូលមើលហាងរបស់យើង។</p> <!-- Use any QR scanner app to visit our store. -->
+
+        <div id="qrcode" class="qr-container">
+            <!-- The QR code canvas will be inserted here by JavaScript -->
+            <img src="photo_2025-06-27_10-26-54.jpg" alt="PG7 Market Logo" class="qr-logo">
+        </div>
+
+        <p class="text-gray-600 mt-4">
+            URL: <a href="https://chochchanrithi.github.io/website-demo/" target="_blank" class="text-blue-600 hover:underline">https://chochchanrithi.github.io/website-demo/</a>
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const websiteUrl = "https://chochchanrithi.github.io/website-demo/";
+            const qrcodeContainer = document.getElementById('qrcode');
+            const logoPath = "photo_2025-06-27_10-26-54.jpg"; // Path to your logo image
+
+            // Initialize QRCode.js
+            // The QR code will be generated as a canvas element inside the 'qrcode' div.
+            const qr = new QRCode(qrcodeContainer, {
+                text: websiteUrl,
+                width: 250, // Width of the QR code in pixels
+                height: 250, // Height of the QR code in pixels
+                colorDark : "#000000", // Color of the dark modules
+                colorLight : "#ffffff", // Color of the light modules
+                correctLevel : QRCode.CorrectLevel.H // Error correction level (L, M, Q, H) - H is best for logos
+            });
+
+            // The logo image is already placed in the HTML with absolute positioning.
+            // This setup ensures it appears on top of the generated canvas.
+        });
+    </script>
+</body>
+</html>
