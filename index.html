@@ -93,7 +93,7 @@
             display: block;
             border: 1px solid #eee; /* Subtle border for QR */
             padding: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for QR */
+            box-shadow: 0 2px 4px (0, 0, 0, 0.1); /* Slight shadow for QR */
         }
         .aba-khqr-instructions {
             margin-top: 25px;
@@ -178,6 +178,11 @@
         .hidden-section {
             display: none !important;
         }
+
+        /* Custom .hidden class to ensure display: none is always applied */
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -213,6 +218,7 @@
         </header>
 
         <main class="flex-grow container mx-auto p-6 lg:p-8 max-w-6xl">
+            <!-- New Introduction Section -->
             <section class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
                 <div class="flex flex-col items-center justify-center mb-4">
                     <img src="photo_2025-06-27_10-26-54.jpg" alt="PG7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4 h-48 object-cover">
@@ -222,7 +228,7 @@
                     </p> <!-- You Can Find Materials. -->
                 </div>
                 <div class="mt-6">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <button id="find-now-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="testButtonClick()">
                         ស្វែងរកឥឡូវនេះ
                     </button> <!-- Find Now -->
                 </div>
@@ -387,7 +393,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://bjs.scene7.com/is/image/bjs/15571?$bjs-Initial600$" alt="Cabbage" class="rounded-lg mb-4 w-full h-48 object-cover">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃក្តោប</h3> <!-- Cabbage -->
-                    <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <!-- Versatile and fresh cabbage, perfect for coleslaw or stir-fries. -->
+                    <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជsន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <!-- Versatile and fresh cabbage, perfect for coleslaw or stir-fries. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / head</span>
                     <button onclick="openPaymentInputModal('1.50', 'Cabbage')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
@@ -635,6 +641,12 @@
     </div> <!-- End of main-content -->
 
     <script type="module">
+        // Global test function for direct onclick binding
+        window.testButtonClick = function() {
+            console.log("TEST: Find Now button was clicked! Basic JavaScript click is working.");
+            alert("Test Click Registered!"); // Using alert for a more visible confirmation
+        };
+
         // Import Firebase modules - MUST be at the top level of the module script
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -644,361 +656,443 @@
         document.addEventListener('DOMContentLoaded', async () => {
             console.log("DOM Content Loaded. Initializing script.");
 
-            // Firebase configuration and initialization
-            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-            const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+            try {
+                // Firebase configuration and initialization
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
-            const auth = getAuth(app);
+                console.log("Firebase App ID:", appId);
+                console.log("Firebase Config:", firebaseConfig);
 
-            let userId = null; // To store the authenticated user ID
-            let currentPaymentAmount = 0; // Global variable to store the current amount
-            let currentProductName = ''; // Global variable to store the current product name
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                console.log("Firebase initialized: app, db, auth objects created.");
 
-            // Get references to the new sections and elements
-            const abaKhqrModalOverlay = document.getElementById('abaKhqrModalOverlay');
-            const modalAmountDisplay = document.getElementById('modalAmount');
-            const paymentStatusMessage = document.getElementById('paymentStatusMessage');
-            const paymentInputSection = document.getElementById('paymentInputSection');
-            const qrCodeSection = document.getElementById('qrCodeSection');
-            const phoneNumberInput = document.getElementById('phoneNumberInput');
-            const locationInput = document.getElementById('locationInput');
-            const continueToQrButton = document.getElementById('continueToQrButton');
-            const displayPhoneNumber = document.getElementById('displayPhoneNumber');
-            const displayLocation = document.getElementById('displayLocation');
-            const displayProductName = document.getElementById('displayProductName'); // New element for product name
 
-            /**
-             * Authenticates the user with Firebase.
-             * Tries to sign in with a custom token if available, otherwise signs in anonymously.
-             */
-            async function authenticateFirebase() {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                        console.log('Signed in with custom token.');
-                    } else {
-                        await signInAnonymously(auth);
-                        console.log('Signed in anonymously.');
+                let userId = null; // To store the authenticated user ID
+                let currentPaymentAmount = 0; // Global variable to store the current amount
+                let currentProductName = ''; // Global variable to store the current product name
+
+                // Get references to the new sections and elements
+                const abaKhqrModalOverlay = document.getElementById('abaKhqrModalOverlay');
+                console.log("Element check: abaKhqrModalOverlay:", abaKhqrModalOverlay);
+                const modalAmountDisplay = document.getElementById('modalAmount');
+                console.log("Element check: modalAmountDisplay:", modalAmountDisplay);
+                const paymentStatusMessage = document.getElementById('paymentStatusMessage');
+                console.log("Element check: paymentStatusMessage:", paymentStatusMessage);
+                const paymentInputSection = document.getElementById('paymentInputSection');
+                console.log("Element check: paymentInputSection:", paymentInputSection);
+                const qrCodeSection = document.getElementById('qrCodeSection');
+                console.log("Element check: qrCodeSection:", qrCodeSection);
+                const phoneNumberInput = document.getElementById('phoneNumberInput');
+                console.log("Element check: phoneNumberInput:", phoneNumberInput);
+                const locationInput = document.getElementById('locationInput');
+                console.log("Element check: locationInput:", locationInput);
+                const continueToQrButton = document.getElementById('continueToQrButton');
+                console.log("Element check: continueToQrButton:", continueToQrButton);
+                const displayPhoneNumber = document.getElementById('displayPhoneNumber');
+                console.log("Element check: displayPhoneNumber:", displayPhoneNumber);
+                const displayLocation = document.getElementById('displayLocation');
+                console.log("Element check: displayLocation:", displayLocation);
+                const displayProductName = document.getElementById('displayProductName'); // New element for product name
+                console.log("Element check: displayProductName:", displayProductName);
+
+                // Add a specific ID to the "Find Now" button for direct testing
+                const findNowButton = document.getElementById('find-now-button');
+                console.log("Element check: findNowButton:", findNowButton);
+
+
+                /**
+                 * Authenticates the user with Firebase.
+                 * Tries to sign in with a custom token if available, otherwise signs in anonymously.
+                 */
+                async function authenticateFirebase() {
+                    try {
+                        console.log("Attempting Firebase authentication...");
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                            console.log('Firebase: Signed in with custom token.');
+                        } else {
+                            await signInAnonymously(auth);
+                            console.log('Firebase: Signed in anonymously.');
+                        }
+                    } catch (error) {
+                        console.error("Firebase Auth Error:", error);
                     }
-                } catch (error) {
-                    console.error("Error during Firebase authentication:", error);
-                }
-            }
-
-            // Listen for auth state changes to get the user ID
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    userId = user.uid;
-                    console.log("Firebase User ID:", userId);
-                } else {
-                    userId = null;
-                    console.log("No user signed in.");
-                }
-            });
-
-            // Authenticate Firebase when the script loads
-            await authenticateFirebase(); // Ensure authentication completes before other operations
-
-            /**
-             * Saves the order details to Firestore.
-             * @param {string} productName - The name of the product purchased.
-             * @param {number} amount - The amount paid for the product.
-             * @param {string} phoneNumber - The customer's phone number.
-             * @param {string} location - The customer's location.
-             */
-            async function saveOrderToFirestore(productName, amount, phoneNumber, location) {
-                if (!userId) {
-                    console.error("User not authenticated. Cannot save order.");
-                    return;
                 }
 
-                try {
-                    const ordersCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/orders`);
-                    await addDoc(ordersCollectionRef, {
-                        productName: productName,
-                        amount: amount,
-                        phoneNumber: phoneNumber,
-                        location: location,
-                        timestamp: new Date()
+                // Listen for auth state changes to get the user ID
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Firebase: User ID obtained:", userId);
+                    } else {
+                        userId = null;
+                        console.log("Firebase: No user signed in (or signed out).");
+                    }
+                });
+
+                // Authenticate Firebase when the script loads
+                await authenticateFirebase(); // Ensure authentication completes before other operations
+
+                /**
+                 * Saves the order details to Firestore.
+                 * @param {string} productName - The name of the product purchased.
+                 * @param {number} amount - The amount paid for the product.
+                 * @param {string} phoneNumber - The customer's phone number.
+                 * @param {string} location - The customer's location.
+                 */
+                async function saveOrderToFirestore(productName, amount, phoneNumber, location) {
+                    if (!userId) {
+                        console.error("Firestore Error: User not authenticated. Cannot save order.");
+                        return;
+                    }
+
+                    try {
+                        const ordersCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/orders`);
+                        await addDoc(ordersCollectionRef, {
+                            productName: productName,
+                            amount: amount,
+                            phoneNumber: phoneNumber,
+                            location: location,
+                            timestamp: new Date()
+                        });
+                        console.log("Firestore: Order saved successfully!");
+                    } catch (e) {
+                        console.error("Firestore Error: Error adding document: ", e);
+                    }
+                }
+
+                /**
+                 * Opens the initial payment input modal.
+                 * This function is called when a product's "Buy Now" button is clicked.
+                 * @param {string | number} amount - The amount to be paid.
+                 * @param {string} productName - The name of the product being purchased.
+                 */
+                window.openPaymentInputModal = function(amount, productName) { // Expose globally for onclick
+                    console.log("openPaymentInputModal called for product:", productName, "amount:", amount);
+                    currentPaymentAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+                    currentProductName = productName; // Store the product name
+
+                    // Reset input fields
+                    if (phoneNumberInput) phoneNumberInput.value = '';
+                    if (locationInput) locationInput.value = '';
+
+                    // Hide QR section, show input section
+                    if (qrCodeSection) {
+                        qrCodeSection.classList.add('hidden');
+                        console.log("Modal state: qrCodeSection has 'hidden' class:", qrCodeSection.classList.contains('hidden'));
+                    }
+                    if (paymentInputSection) {
+                        paymentInputSection.classList.remove('hidden');
+                        console.log("Modal state: paymentInputSection has 'hidden' class:", paymentInputSection.classList.contains('hidden'));
+                        console.log("Modal state: paymentInputSection display style:", window.getComputedStyle(paymentInputSection).display);
+                    }
+
+
+                    // Hide any previous payment status message
+                    if (paymentStatusMessage) {
+                        paymentStatusMessage.classList.add('hidden');
+                        console.log("Modal state: paymentStatusMessage has 'hidden' class:", paymentStatusMessage.classList.contains('hidden'));
+                    }
+
+
+                    // Display the modal overlay
+                    if (abaKhqrModalOverlay) {
+                        abaKhqrModalOverlay.classList.add('show');
+                        console.log("Modal state: abaKhqrModalOverlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
+                        console.log("Modal state: abaKhqrModalOverlay display style:", window.getComputedStyle(abaKhqrModalOverlay).display);
+                    }
+                };
+
+                /**
+                 * Shows the QR code section of the modal after input is provided.
+                 * This function is called when the "Continue to QR Code" button is clicked.
+                 * @param {string} phone - The phone number entered by the user.
+                 * @param {string} location - The location entered by the user.
+                 * @param {string} productName - The name of the product.
+                 */
+                function showQrCodeModal(phone, location, productName) {
+                    console.log("showQrCodeModal called.");
+                    if (isNaN(currentPaymentAmount)) {
+                        console.error('Invalid amount for QR code display.');
+                        if (modalAmountDisplay) modalAmountDisplay.textContent = 'N/A ដុល្លារ';
+                    } else {
+                        if (modalAmountDisplay) modalAmountDisplay.textContent = `${currentPaymentAmount.toFixed(2)} ដុល្លារ`;
+                    }
+
+                    if (displayPhoneNumber) displayPhoneNumber.textContent = phone;
+                    if (displayLocation) displayLocation.textContent = location;
+                    if (displayProductName) displayProductName.textContent = productName; // Display the product name
+
+                    // Hide input section, show QR section
+                    if (paymentInputSection) {
+                        paymentInputSection.classList.add('hidden');
+                        console.log("Modal state: paymentInputSection has 'hidden' class:", paymentInputSection.classList.contains('hidden'));
+                        console.log("Modal state: paymentInputSection display style:", window.getComputedStyle(paymentInputSection).display);
+                    }
+                    if (qrCodeSection) {
+                        qrCodeSection.classList.remove('hidden');
+                        console.log("Modal state: qrCodeSection has 'hidden' class:", qrCodeSection.classList.contains('hidden'));
+                        console.log("Modal state: qrCodeSection display style:", window.getComputedStyle(qrCodeSection).display);
+                    }
+                    console.log("Modal state: QR section shown, input section hidden.");
+                }
+
+                // Event listener for the "Continue to QR Code" button
+                if (continueToQrButton) {
+                    continueToQrButton.addEventListener('click', () => {
+                        console.log("Event: Continue to QR Button clicked.");
+                        const phoneNumber = phoneNumberInput ? phoneNumberInput.value.trim() : '';
+                        const location = locationInput ? locationInput.value.trim() : '';
+
+                        if (phoneNumber === '' || location === '') {
+                            alert('សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងរបស់អ្នក។'); // Please enter your phone number and location.
+                            console.warn("Validation: Phone number or location is empty.");
+                            return;
+                        }
+
+                        showQrCodeModal(phoneNumber, location, currentProductName);
                     });
-                    console.log("Order saved to Firestore successfully!");
-                } catch (e) {
-                    console.error("Error adding document: ", e);
-                }
-            }
-
-            /**
-             * Opens the initial payment input modal.
-             * This function is called when a product's "Buy Now" button is clicked.
-             * @param {string | number} amount - The amount to be paid.
-             * @param {string} productName - The name of the product being purchased.
-             */
-            function openPaymentInputModal(amount, productName) {
-                console.log("openPaymentInputModal called for product:", productName, "amount:", amount);
-                currentPaymentAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
-                currentProductName = productName; // Store the product name
-
-                // Reset input fields
-                phoneNumberInput.value = '';
-                locationInput.value = '';
-
-                // Hide QR section, show input section
-                qrCodeSection.classList.add('hidden');
-                paymentInputSection.classList.remove('hidden');
-
-                // Hide any previous payment status message
-                paymentStatusMessage.classList.add('hidden');
-
-                // Display the modal overlay
-                abaKhqrModalOverlay.classList.add('show');
-                console.log("Modal overlay element:", abaKhqrModalOverlay);
-                console.log("Modal overlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
-            }
-
-            /**
-             * Shows the QR code section of the modal after input is provided.
-             * This function is called when the "Continue to QR Code" button is clicked.
-             * @param {string} phone - The phone number entered by the user.
-             * @param {string} location - The location entered by the user.
-             * @param {string} productName - The name of the product.
-             */
-            function showQrCodeModal(phone, location, productName) {
-                if (isNaN(currentPaymentAmount)) {
-                    console.error('Invalid amount for QR code display.');
-                    modalAmountDisplay.textContent = 'N/A ដុល្លារ';
                 } else {
-                    modalAmountDisplay.textContent = `${currentPaymentAmount.toFixed(2)} ដុល្លារ`;
+                    console.error("Error: continueToQrButton element not found, cannot attach click listener.");
                 }
 
-                displayPhoneNumber.textContent = phone;
-                displayLocation.textContent = location;
-                displayProductName.textContent = productName; // Display the product name
 
-                // Hide input section, show QR section
-                paymentInputSection.classList.add('hidden');
-                qrCodeSection.classList.remove('hidden');
-            }
+                /**
+                 * Closes the entire ABA KHQR modal.
+                 */
+                window.closeABAModal = function() { // Expose globally for onclick
+                    console.log("closeABAModal called.");
+                    if (abaKhqrModalOverlay) {
+                        abaKhqrModalOverlay.classList.remove('show');
+                        console.log("Modal state: abaKhqrModalOverlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
+                        console.log("Modal state: abaKhqrModalOverlay display style:", window.getComputedStyle(abaKhqrModalOverlay).display);
+                    }
+                };
 
-            // Event listener for the "Continue to QR Code" button
-            continueToQrButton.addEventListener('click', () => {
-                console.log("Continue to QR Button clicked.");
-                const phoneNumber = phoneNumberInput.value.trim();
-                const location = locationInput.value.trim();
+                /**
+                 * Simulates a payment confirmation, saves the order to Firestore,
+                 * and then triggers the print dialog.
+                 */
+                window.simulatePaymentAndPrint = async function() { // Expose globally for onclick
+                    console.log("simulatePaymentAndPrint called.");
+                    // Get the data to save
+                    const phoneNumber = phoneNumberInput ? phoneNumberInput.value.trim() : '';
+                    const location = locationInput ? locationInput.value.trim() : '';
 
-                if (phoneNumber === '' || location === '') {
-                    // Using a custom message box would be better than alert() in a real app
-                    // For now, using alert as per original code, but will suggest improvement.
-                    alert('សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងរបស់អ្នក។'); // Please enter your phone number and location.
-                    return;
-                }
+                    // Save order to Firestore
+                    await saveOrderToFirestore(currentProductName, currentPaymentAmount, phoneNumber, location);
 
-                showQrCodeModal(phoneNumber, location, currentProductName);
-            });
-
-            /**
-             * Closes the entire ABA KHQR modal.
-             */
-            function closeABAModal() {
-                console.log("Closing ABA Modal.");
-                abaKhqrModalOverlay.classList.remove('show');
-            }
-
-            /**
-             * Simulates a payment confirmation, saves the order to Firestore,
-             * and then triggers the print dialog.
-             */
-            async function simulatePaymentAndPrint() {
-                console.log("Simulate Payment and Print clicked.");
-                // Get the data to save
-                const phoneNumber = phoneNumberInput.value.trim();
-                const location = locationInput.value.trim();
-
-                // Save order to Firestore
-                await saveOrderToFirestore(currentProductName, currentPaymentAmount, phoneNumber, location);
-
-                // Show payment confirmed message with "Done You ready the pay money"
-                paymentStatusMessage.textContent = 'រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ'; // Translated
-                paymentStatusMessage.classList.remove('hidden');
-
-                // Introduce a small delay (e.g., 500 milliseconds) before printing
-                setTimeout(() => {
-                    window.print();
-                }, 500); // Adjust delay as needed
-            }
-
-            // Close the modal if the user clicks outside of the modal content
-            abaKhqrModalOverlay.addEventListener('click', (event) => {
-                // Check if the click occurred directly on the overlay, not its children
-                if (event.target === abaKhqrModalOverlay) {
-                    closeABAModal();
-                }
-            });
-
-            // Close the modal if the Escape key is pressed
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && abaKhqrModalOverlay.classList.contains('show')) {
-                    closeABAModal();
-                }
-            });
-
-            // --- Enhanced Search Functionality ---
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
-            // Select all h2 elements with data-section-heading and all section elements with data-section-category
-            const allContentElements = document.querySelectorAll('h2[data-section-heading], section[data-section-category]');
-
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keyup', (event) => {
-                if (event.key === 'Enter') {
-                    performSearch();
-                }
-            });
-
-            function performSearch() {
-                console.log("Performing search.");
-                const query = searchInput.value.toLowerCase().trim();
-
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
-
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling; // The section div/grid after the heading
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling; // The h2 before the section
+                    // Show payment confirmed message with "Done You ready the pay money"
+                    if (paymentStatusMessage) {
+                        paymentStatusMessage.textContent = 'រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ'; // Translated
+                        paymentStatusMessage.classList.remove('hidden');
+                        console.log("Payment status message displayed.");
                     }
 
-                    let sectionShouldBeVisible = false;
-                    let anyProductMatches = false;
 
-                    if (query === '') {
-                        // If query is empty, show everything
+                    // Introduce a small delay (e.g., 500 milliseconds) before printing
+                    setTimeout(() => {
+                        console.log("Triggering print dialog.");
+                        window.print();
+                    }, 500); // Adjust delay as needed
+                };
+
+                // Close the modal if the user clicks outside of the modal content
+                if (abaKhqrModalOverlay) {
+                    abaKhqrModalOverlay.addEventListener('click', (event) => {
+                        // Check if the click occurred directly on the overlay, not its children
+                        if (event.target === abaKhqrModalOverlay) {
+                            closeABAModal();
+                        }
+                    });
+                } else {
+                    console.error("Error: abaKhqrModalOverlay element not found, cannot attach click outside listener.");
+                }
+
+
+                // Close the modal if the Escape key is pressed
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && abaKhqrModalOverlay && abaKhqrModalOverlay.classList.contains('show')) {
+                        closeABAModal();
+                    }
+                });
+
+                // --- Enhanced Search Functionality ---
+                const searchInput = document.getElementById('search-input');
+                console.log("Element check: searchInput:", searchInput);
+                const searchButton = document.getElementById('search-button');
+                console.log("Element check: searchButton:", searchButton);
+                // Select all h2 elements with data-section-heading and all section elements with data-section-category
+                const allContentElements = document.querySelectorAll('h2[data-section-heading], section[data-section-category]');
+                console.log("Element check: allContentElements (length):", allContentElements.length);
+
+                if (searchButton) {
+                    searchButton.addEventListener('click', performSearch);
+                    console.log("Event: Search button click listener attached.");
+                } else {
+                    console.error("Error: searchButton element not found, cannot attach click listener.");
+                }
+
+                if (searchInput) {
+                    searchInput.addEventListener('keyup', (event) => {
+                        if (event.key === 'Enter') {
+                            performSearch();
+                        }
+                    });
+                    console.log("Event: Search input keyup listener attached.");
+                } else {
+                    console.error("Error: searchInput element not found, cannot attach keyup listener.");
+                }
+
+                // --- Navigation Button Functions ---
+
+                /**
+                 * Shows all product sections and products.
+                 */
+                window.showAllContent = function() { // Expose globally for onclick
+                    console.log("showAllContent called.");
+                    const searchInputElem = document.getElementById('search-input');
+                    if (searchInputElem) searchInputElem.value = ''; // Clear search input
+                    allContentElements.forEach(element => {
+                        const isHeading = element.tagName === 'H2';
+                        let sectionContainer;
+                        let headingElement;
+
+                        if (isHeading) {
+                            headingElement = element;
+                            sectionContainer = element.nextElementSibling;
+                        } else {
+                            sectionContainer = element;
+                            headingElement = element.previousElementSibling;
+                        }
+
                         if (headingElement) headingElement.classList.remove('hidden-section');
                         if (sectionContainer) {
                             sectionContainer.classList.remove('hidden-section');
-                            // Ensure all products within are also visible
                             sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                                product.style.display = 'flex';
+                                product.style.display = 'flex'; // Ensure all products are visible
                             });
                         }
-                        return; // Move to the next element
-                    }
+                    });
+                    console.log("Content: All content shown.");
+                };
 
-                    // Check if the section heading itself matches the query
-                    if (headingElement && headingElement.textContent.toLowerCase().includes(query)) {
-                        sectionShouldBeVisible = true;
-                    }
+                /**
+                 * Filters content to show only a specific category.
+                 * @param {string} category - The data-section-category value to show.
+                 */
+                window.filterByCategory = function(category) { // Expose globally for onclick
+                    console.log("filterByCategory called for category:", category);
+                    const searchInputElem = document.getElementById('search-input');
+                    if (searchInputElem) searchInputElem.value = ''; // Clear search input
+                    allContentElements.forEach(element => {
+                        const isHeading = element.tagName === 'H2';
+                        let sectionContainer;
+                        let headingElement;
 
-                    // Check products within the section
-                    if (sectionContainer) {
-                        const products = sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md');
-                        products.forEach(product => {
-                            const productName = product.querySelector('h3').textContent.toLowerCase();
-                            const productDescription = product.querySelector('p').textContent.toLowerCase();
+                        if (isHeading) {
+                            headingElement = element;
+                            sectionContainer = element.nextElementSibling;
+                        } else {
+                            sectionContainer = element;
+                            headingElement = element.previousElementSibling;
+                        }
 
-                            if (productName.includes(query) || productDescription.includes(query)) {
-                                product.style.display = 'flex'; // Show product
-                                anyProductMatches = true;
-                            } else {
-                                product.style.display = 'none'; // Hide product
+                        const currentCategory = sectionContainer ? sectionContainer.getAttribute('data-section-category') : '';
+
+                        if (currentCategory === category) {
+                            if (headingElement) headingElement.classList.remove('hidden-section');
+                            if (sectionContainer) {
+                                sectionContainer.classList.remove('hidden-section');
+                                // Ensure all products within the selected category are visible
+                                sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
+                                    product.style.display = 'flex';
+                                });
                             }
-                        });
-                    }
+                        } else {
+                            if (headingElement) headingElement.classList.add('hidden-section');
+                            if (sectionContainer) sectionContainer.classList.add('hidden-section');
+                        }
+                    });
+                    console.log("Content: Filtered by category:", category);
+                };
 
-                    // A section (and its heading) is visible if its heading matches OR if any of its products match
-                    if (sectionShouldBeVisible || anyProductMatches) {
-                        if (headingElement) headingElement.classList.remove('hidden-section');
-                        if (sectionContainer) sectionContainer.classList.remove('hidden-section');
-                    } else {
-                        if (headingElement) headingElement.classList.add('hidden-section');
-                        if (sectionContainer) sectionContainer.classList.add('hidden-section');
-                    }
-                });
-            }
+                function performSearch() {
+                    console.log("performSearch called.");
+                    const query = searchInput.value.toLowerCase().trim();
 
-            // --- New Navigation Button Functions ---
+                    allContentElements.forEach(element => {
+                        const isHeading = element.tagName === 'H2';
+                        let sectionContainer;
+                        let headingElement;
 
-            /**
-             * Shows all product sections and products.
-             */
-            function showAllContent() {
-                console.log("Showing all content.");
-                document.getElementById('search-input').value = ''; // Clear search input
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
+                        if (isHeading) {
+                            headingElement = element;
+                            sectionContainer = element.nextElementSibling; // The section div/grid after the heading
+                        } else {
+                            sectionContainer = element;
+                            headingElement = element.previousElementSibling; // The h2 before the section
+                        }
 
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling;
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling;
-                    }
+                        let sectionShouldBeVisible = false;
+                        let anyProductMatches = false;
 
-                    if (headingElement) headingElement.classList.remove('hidden-section');
-                    if (sectionContainer) {
-                        sectionContainer.classList.remove('hidden-section');
-                        sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                            product.style.display = 'flex'; // Ensure all products are visible
-                        });
-                    }
-                });
-            }
+                        if (query === '') {
+                            // If query is empty, show everything
+                            if (headingElement) headingElement.classList.remove('hidden-section');
+                            if (sectionContainer) {
+                                sectionContainer.classList.remove('hidden-section');
+                                // Ensure all products within are also visible
+                                sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
+                                    product.style.display = 'flex';
+                                });
+                            }
+                            return; // Move to the next element
+                        }
 
-            /**
-             * Filters content to show only a specific category.
-             * @param {string} category - The data-section-category value to show.
-             */
-            function filterByCategory(category) {
-                console.log("Filtering by category:", category);
-                document.getElementById('search-input').value = ''; // Clear search input
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
+                        // Check if the section heading itself matches the query
+                        if (headingElement && headingElement.textContent.toLowerCase().includes(query)) {
+                            sectionShouldBeVisible = true;
+                        }
 
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling;
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling;
-                    }
-
-                    const currentCategory = sectionContainer ? sectionContainer.getAttribute('data-section-category') : '';
-
-                    if (currentCategory === category) {
-                        if (headingElement) headingElement.classList.remove('hidden-section');
+                        // Check products within the section
                         if (sectionContainer) {
-                            sectionContainer.classList.remove('hidden-section');
-                            // Ensure all products within the selected category are visible
-                            sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                                product.style.display = 'flex';
+                            const products = sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md');
+                            products.forEach(product => {
+                                const productName = product.querySelector('h3').textContent.toLowerCase();
+                                const productDescription = product.querySelector('p').textContent.toLowerCase();
+
+                                if (productName.includes(query) || productDescription.includes(query)) {
+                                    product.style.display = 'flex'; // Show product
+                                    anyProductMatches = true;
+                                } else {
+                                    product.style.display = 'none'; // Hide product
+                                }
                             });
                         }
-                    } else {
-                        if (headingElement) headingElement.classList.add('hidden-section');
-                        if (sectionContainer) sectionContainer.classList.add('hidden-section');
-                    }
-                });
+
+                        // A section (and its heading) is visible if its heading matches OR if any of its products match
+                        if (sectionShouldBeVisible || anyProductMatches) {
+                            if (headingElement) headingElement.classList.remove('hidden-section');
+                            if (sectionContainer) sectionContainer.classList.remove('hidden-section');
+                        } else {
+                            if (headingElement) headingElement.classList.add('hidden-section');
+                            if (sectionContainer) sectionContainer.classList.add('hidden-section');
+                        }
+                    });
+                    console.log("Content: Search performed for query:", query);
+                }
+
+
+                console.log("Script initialization complete.");
+
+            } catch (error) {
+                console.error("CRITICAL ERROR during DOMContentLoaded script execution:", error);
             }
-
-            // Expose functions to the global scope so HTML onclick attributes can access them
-            window.openPaymentInputModal = openPaymentInputModal;
-            window.closeABAModal = closeABAModal;
-            window.simulatePaymentAndPrint = simulatePaymentAndPrint;
-            window.showAllContent = showAllContent;
-            window.filterByCategory = filterByCategory;
-
-            console.log("All functions exposed to window object.");
         }); // End of DOMContentLoaded
     </script>
 </body>
