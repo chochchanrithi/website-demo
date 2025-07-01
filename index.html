@@ -27,17 +27,16 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
-            display: flex;
+            display: none; /* Changed from flex to none by default */
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            opacity: 0; /* Still use opacity for transition */
+            transition: opacity 0.3s ease; /* Transition only opacity */
         }
         .modal-overlay.show {
+            display: flex; /* Changed from opacity/visibility to flex */
             opacity: 1;
-            visibility: visible;
         }
         .modal-content {
             background-color: white;
@@ -238,7 +237,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Passion Fruit Drink</h3>
     <p class="text-gray-600 mb-4">ភេសជ្ជៈផ្លែផាសសិន បំពេញជាតិស្ករ និងផ្លែពោរពេញដោយក្ដារផ្លែ វិធីផ្សំច្រើនប្រភេទ៖ canned juice, sparkling water mix។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$1.40 </span>
-    <button onclick="openPaymentInputModal('1.42')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('1.40', 'Passion Fruit Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -250,7 +249,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Cold Brew Coffee</h3>
     <p class="text-gray-600 mb-4">កាហ្វេត្រជាក់ (cold brew) 100% Arabica, មាន caffeine 150‑200 mg ក្នុងកែវ 355 ml។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$2.99</span>
-    <button onclick="openPaymentInputModal('2.99')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('2.99', 'Cold Brew Coffee')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -259,7 +258,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2"> Green Tea </h3>
     <p class="text-gray-600 mb-4">តែបៃតងជំពាក់តិចស្ករ (~1.2 $), គ្រប់លក្ខណៈ ៣៦០ ml, បានលក់នៅកម្ពុជា</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$1.20</span>
-    <button onclick="openPaymentInputModal('1.20')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('1.20', 'Green Tea')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -269,7 +268,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Carabao Energy Drink</h3>
     <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលនាំមកពីថៃ មាន 106 mg caffeine ក្នុង can 330 ml និង 15 g ស្ករ។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
-    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('0.65', 'Carabao Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -279,7 +278,7 @@
                  <h3 class="text-xl font-semibold text-gray-800 mb-2">Boostrong Energy Drink</h3>
                  <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលខ្មែរ ពោរពេញដោយ B‑vitamins, taurine និង caffeine សម្រាប់ផ្តល់ថាមពលខ្លាំង។</p>
                 <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
-                 <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                 <button onclick="openPaymentInputModal('0.65', 'Boostrong Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                     ទិញពេលនេះ
                 </button>
              </div>
@@ -288,7 +287,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Ize Cola</h3>
     <p class="text-gray-600 mb-4">ភេសជ្ជៈកូឡាជាតិខ្មែរ មានជាតិស្ករច្រើនទាប  និង caffeine បញ្ចូលក្នុង carbonated water។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$0.50</span>
-    <button onclick="openPaymentInputModal('0.50')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('0.50', 'Ize Cola')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -298,7 +297,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Red Bull Energy Drink</h3> <!-- Grape Juice -->
                     <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលទ្រង់ទ្រាយម៉ოსខេត្តស្ករនិងដែកសារធាតុ B‑vitamins ទឹកកក និង taurine។</p> <!-- Delicious and refreshing grape juice, a taste of natural goodness. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
-                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('0.65', 'Red Bull Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -308,7 +307,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Champion Green Energy Drink</h3> <!-- Milk -->
                     <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលបៃតងថ្មីពី Champion Group ប្រើបច្ចេកវិទ្យាជាតិក្រុមសហព័ន្ធអ៊ឺរ៉ុប។</p> <!-- Fresh and nutritious milk. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
-                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('0.65', 'Champion Green Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -318,7 +317,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Sting Red (Strawberry)</h3> <!-- Cambodia Water -->
                     <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលរសជាតិស្ត្របឺរី មាន caffeine ប្រហែល 72 mg/250 ml និងត្រាំតែមធ្យម។</p> <!-- Fresh and hydrating Cambodian water. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
-                    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('0.65', 'Sting Red (Strawberry)')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -328,7 +327,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Wurkz Energy Drink</h3> <!-- Ganzberg Beer -->
                     <p class="text-gray-600 mb-4">ផលិតផលមីណ្ឌមកពីកម្ពុជាដែលបានទទួល Gold និង Silver Award ពី Monde Selection ជាមួយ B‑vitamins ទាំងឡាយ។</p> <!-- Crisp and refreshing Ganzberg beer. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
-                    <button onclick="openPaymentInputModal('10.659')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('0.65', 'Wurkz Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>  <!-- Krud Energy Drink -->
@@ -337,7 +336,7 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Krud Energy Drink</h3>
     <p class="text-gray-600 mb-4">ស្រស់ប្លែក និងផ្តល់ថាមពលបរិច្ច័យ។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
-    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('0.65', 'Krud Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
@@ -348,11 +347,11 @@
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Vigor Power Energy Drink</h3>
     <p class="text-gray-600 mb-4">ផ្ដល់ថាមពលលឿន និងសារ៉ាប់សារ។</p>
     <span class="text-blue-600 text-2xl font-bold mb-4">$0.65 </span>
-    <button onclick="openPaymentInputModal('0.65')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+    <button onclick="openPaymentInputModal('0.65', 'Vigor Power Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
       ទិញពេលនេះ
     </button>
   </div>
-
+  
 
             </section>
 
@@ -363,7 +362,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្កាខាត់ណាខៀវស្រស់</h3> <!-- Fresh Broccoli -->
                     <p class="text-gray-600 mb-4">ផ្កាខាត់ណាខៀវក្នុងស្រុក សរីរាង្គ ល្អសម្រាប់ចំហុយ ឬឆា។</p> <!-- Locally sourced, organic broccoli, great for steaming or stir-fries. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.99 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.99')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.99', 'Broccoli')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -372,7 +371,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ការ៉ុតស្រស់</h3> <!-- Crisp Carrots -->
                     <p class="text-gray-600 mb-4">ការ៉ុតផ្អែម និងស្រួយ ល្អឥតខ្ចោះសម្រាប់ញ៉ាំ ឬចម្អិន។</p> <!-- Sweet and crunchy carrots, perfect for snacking or cooking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50', 'Carrots')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -381,7 +380,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃខ្មៅសរីរាង្គ</h3> <!-- Organic Spinach -->
                     <p class="text-gray-600 mb-4">ស្លឹកស្ពៃខ្មៅស្រស់ សម្បូរជីវជាតិសម្រាប់សាឡាដ និងអាហាររបស់អ្នក។</p> <!-- Fresh, nutrient-rich spinach leaves for your salads and meals. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$0.50 / bunch</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('0.50')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('0.50', 'Spinach')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -390,7 +389,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃក្តោប</h3> <!-- Cabbage -->
                     <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <!-- Versatile and fresh cabbage, perfect for coleslaw or stir-fries. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / head</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.50', 'Cabbage')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -399,7 +398,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រប់</h3> <!-- Eggplant -->
                     <p class="text-gray-600 mb-4">ត្រប់ទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់ដុត ឬដុតនំ។</p> <!-- Smooth and tender eggplant, great for grilling or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.75')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.75', 'Eggplant')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -408,7 +407,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ដំឡូងបារាំង</h3> <!-- Potato -->
                     <p class="text-gray-600 mb-4">ដំឡូងបារាំងចម្រុះ ល្អឥតខ្ចោះសម្រាប់បុក ដុតនំ ឬចៀន។</p> <!-- Versatile potatoes, perfect for mashing, baking, or frying. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.50')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('3.50', 'Potato')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -417,7 +416,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ឆៃផាវ</h3> <!-- Parsnip -->
                     <p class="text-gray-600 mb-4">ផាសនីបផ្អែម និងមានរសជាតិដី ល្អសម្រាប់អាំង ឬស្ងោរ។</p> <!-- Sweet and earthy parsnips, ideal for roasting or stews. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.29 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.29')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.29', 'Parsnip')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -426,7 +425,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រសក់</h3> <!-- Cucumber -->
                     <p class="text-gray-600 mb-4">ត្រសក់ស្រស់ និងស្រួយ ល្អឥតខ្ចោះសម្រាប់សាឡាដ និងអាហារសម្រន់។</p> <!-- Crisp and refreshing cucumbers, perfect for salads and snacks. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.20')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.20', 'Cucumber')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -435,7 +434,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្សិត</h3> <!-- Mushroom -->
                     <p class="text-gray-600 mb-4">ផ្សិតស្រស់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់បន្ថែមទៅក្នុងមុខម្ហូបណាមួយ។</p> <!-- Fresh and flavorful mushrooms, great for adding to any dish. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('2.55')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('2.55', 'Mushroom')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -444,7 +443,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ញី</h3> <!-- Ginger -->
                     <p class="text-gray-600 mb-4">ខ្ញីក្រអូប និងមានរសជាតិហឹរ ល្អឥតខ្ចោះសម្រាប់ចម្អិនអាហារ ឬតែ។</p> <!-- Aromatic and zesty ginger, perfect for cooking or tea. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$1.40 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.40')">
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.40', 'Ginger')">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -453,7 +452,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ម្ទេសប្លោក</h3> <!-- Bell Pepper -->
                     <p class="text-gray-600 mb-4">ម្ទេសប្លោកចម្រុះពណ៌ និងផ្អែម ល្អសម្រាប់ឆា និងសាឡាដ។</p> <!-- Colorful and sweet bell peppers, ideal for stir-fries and salads. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('2.55')">
+                    <button onclick="openPaymentInputModal('2.55', 'Pepper')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -462,7 +461,7 @@
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">ល្ហុង</h3> <!-- Ripe Papaya Slices -->
                 <p class="text-gray-600 mb-4">ចំណិតល្ហុងទុំស្រស់ៗ ងាយស្រួលញ៉ាំ សម្បូរវីតាមីន។</p> <!-- Ready-to-eat sweet papaya slices, rich in vitamins. -->
                 <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('1.20')">
+                <button onclick="openPaymentInputModal('1.20', 'Sliced Papaya')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                     ទិញឥឡូវនេះ
                 </button> <!-- Buy Now -->
             </div>
@@ -475,7 +474,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ទ្រូងមាន់</h3> <!-- Chicken Breast -->
                     <p class="text-gray-600 mb-4">សាច់ទ្រូងមាន់ស្រស់ គ្មានខ្លាញ់ ល្អឥតខ្ចោះសម្រាប់អាំង ឬដុតនំ។</p> <!-- Fresh, lean chicken breast, perfect for grilling or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$5.99 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('5.99')">
+                    <button onclick="openPaymentInputModal('5.99', 'Chicken Breast')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -484,7 +483,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់គោអាំង</h3> <!-- Beef Steak -->
                     <p class="text-gray-600 mb-4">សាច់គោអាំងទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់អាហារដ៏ឈ្ងុយឆ្ងាញ់។</p> <!-- Tender and flavorful beef steak, ideal for a hearty meal. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$12.50 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('12.50')">
+                    <button onclick="openPaymentInputModal('12.50', 'Beef Steak')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -493,7 +492,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ជ្រូក</h3> <!-- Pork Chops -->
                     <p class="text-gray-600 mb-4">សាច់ជ្រូក juicy ល្អឥតខ្ចោះសម្រាប់ចៀន ឬដុតនំ។</p> <!-- Juicy pork chops, perfect for pan-frying or baking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$8.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('8.75')">
+                    <button onclick="openPaymentInputModal('8.75', 'Pork Chops')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -502,7 +501,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ក្តាន់</h3> <!-- Venison -->
                     <p class="text-gray-600 mb-4">សាច់សត្វក្តាន់សម្បូរបែប និងទន់ ជាជម្រើសសាច់ក្រហមដែលមានសុខភាពល្អ។</p> <!-- Rich and tender venison, a healthy red meat alternative. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$7.75 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('7.75')">
+                    <button onclick="openPaymentInputModal('7.75', 'Venison')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -511,7 +510,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់សេះ</h3> <!-- Horse Meat -->
                     <p class="text-gray-600 mb-4">សាច់សេះគ្មានខ្លាញ់ និងមានរសជាតិឆ្ងាញ់ ជាបទពិសោធន៍ធ្វើម្ហូបដ៏ប្លែក។</p> <!-- Lean and flavorful horse meat, a unique culinary experience. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$16.70 / kg</span>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300" onclick="openPaymentInputModal('16.70')">
+                    <button onclick="openPaymentInputModal('16.70', 'Horse Meat')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -520,7 +519,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ទា</h3> <!-- Duck Meat -->
                     <p class="text-gray-600 mb-4">សាច់ទាសម្បូរបែប និងមានជាតិទឹក ល្អសម្រាប់អាំង ឬ confit។</p> <!-- Rich and succulent duck meat, ideal for roasting or confit. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$3.00 / kg</span>
-                    <button onclick="openPaymentInputModal('3.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('3.00', 'Duck Meat')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -530,7 +529,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ចៀម</h3> <!-- Mutton -->
                     <p class="text-gray-600 mb-4">សាច់ចៀមមានរសជាតិឆ្ងាញ់ និងរឹងមាំ ល្អសម្រាប់គុយរី និងចម្អិនយឺត។</p> <!-- Flavorful and robust mutton, great for curries and slow cooking. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$25.00 / kg</span>
-                    <button onclick="openPaymentInputModal('25.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('25.00', 'Mutton')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -539,7 +538,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ពពែ</h3> <!-- Chevon Meat -->
                     <p class="text-gray-600 mb-4">សាច់ពពែទន់ ល្អឥតខ្ចោះសម្រាប់មុខម្ហូបជាច្រើនប្រភេទ។</p> <!-- Tender goat meat, excellent for a variety of dishes. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$30.00 / kg</span>
-                    <button onclick="openPaymentInputModal('30.00')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('30.00', 'Chevon Meat')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -548,7 +547,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រី</h3> <!-- Fish Meat -->
                     <p class="text-gray-600 mb-4">សាច់ត្រីស្រស់ និងមានសុខភាពល្អ ល្អឥតខ្ចោះសម្រាប់មុខម្ហូបគ្រឿងសមុទ្រណាមួយ។</p> <!-- Fresh and healthy fish fillets, perfect for any seafood recipe. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$2.75 / kg</span>
-                    <button onclick="openPaymentInputModal('2.75')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('2.75', 'Fish Meat')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -557,7 +556,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">បង្កង</h3> <!-- Lobster Meat -->
                     <p class="text-gray-600 mb-4">សាច់បង្កងដ៏ប្រណិត និងទន់ ជាអាហារឆ្ងាញ់ពិតប្រាកដ។</p> <!-- Luxurious and tender lobster meat, a true delicacy. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$6.39 / kg</span>
-                    <button onclick="openPaymentInputModal('6.39')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('6.39', 'Lobster Meat')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -566,7 +565,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">ក្តាមសមុទ្រ</h3> <!-- Sea Crab -->
                     <p class="text-gray-600 mb-4">ក្តាមសមុទ្រស្រស់ ល្អឥតខ្ចោះសម្រាប់ពិធីជប់លៀងគ្រឿងសមុទ្រ។</p> <!-- Fresh sea crab, perfect for a seafood feast. -->
                     <span class="text-blue-600 text-2xl font-bold mb-4">$15.25 / kg</span>
-                    <button onclick="openPaymentInputModal('15.25')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <button onclick="openPaymentInputModal('15.25', 'Sea Crab')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
@@ -604,6 +603,9 @@
                     <p class="aba-khqr-info">
                         <span class="font-semibold">ទីតាំង:</span> <span id="displayLocation"></span>
                     </p>
+                    <p class="aba-khqr-info">
+                        <span class="font-semibold">ផលិតផល:</span> <span id="displayProductName"></span>
+                    </p>
 
                     <p id="modalAmount" class="aba-khqr-amount">0.00 ដុល្លារ</p> <!-- 0.00 USD -->
 
@@ -632,9 +634,24 @@
         </footer>
     </div> <!-- End of main-content -->
 
-    <script>
-        // Global variable to store the current amount
-        let currentPaymentAmount = 0;
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase configuration and initialization
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let userId = null; // To store the authenticated user ID
+        let currentPaymentAmount = 0; // Global variable to store the current amount
+        let currentProductName = ''; // Global variable to store the current product name
 
         // Get references to the new sections and elements
         const abaKhqrModalOverlay = document.getElementById('abaKhqrModalOverlay');
@@ -647,14 +664,78 @@
         const continueToQrButton = document.getElementById('continueToQrButton');
         const displayPhoneNumber = document.getElementById('displayPhoneNumber');
         const displayLocation = document.getElementById('displayLocation');
+        const displayProductName = document.getElementById('displayProductName'); // New element for product name
+
+        /**
+         * Authenticates the user with Firebase.
+         * Tries to sign in with a custom token if available, otherwise signs in anonymously.
+         */
+        async function authenticateFirebase() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                    console.log('Signed in with custom token.');
+                } else {
+                    await signInAnonymously(auth);
+                    console.log('Signed in anonymously.');
+                }
+            } catch (error) {
+                console.error("Error during Firebase authentication:", error);
+            }
+        }
+
+        // Listen for auth state changes to get the user ID
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                userId = user.uid;
+                console.log("Firebase User ID:", userId);
+            } else {
+                userId = null;
+                console.log("No user signed in.");
+            }
+        });
+
+        // Authenticate Firebase when the script loads
+        authenticateFirebase();
+
+        /**
+         * Saves the order details to Firestore.
+         * @param {string} productName - The name of the product purchased.
+         * @param {number} amount - The amount paid for the product.
+         * @param {string} phoneNumber - The customer's phone number.
+         * @param {string} location - The customer's location.
+         */
+        async function saveOrderToFirestore(productName, amount, phoneNumber, location) {
+            if (!userId) {
+                console.error("User not authenticated. Cannot save order.");
+                return;
+            }
+
+            try {
+                const ordersCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/orders`);
+                await addDoc(ordersCollectionRef, {
+                    productName: productName,
+                    amount: amount,
+                    phoneNumber: phoneNumber,
+                    location: location,
+                    timestamp: new Date()
+                });
+                console.log("Order saved to Firestore successfully!");
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        }
 
         /**
          * Opens the initial payment input modal.
          * This function is called when a product's "Buy Now" button is clicked.
          * @param {string | number} amount - The amount to be paid.
+         * @param {string} productName - The name of the product being purchased.
          */
-        function openPaymentInputModal(amount) {
+        function openPaymentInputModal(amount, productName) {
+            console.log("openPaymentInputModal called for product:", productName, "amount:", amount);
             currentPaymentAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+            currentProductName = productName; // Store the product name
 
             // Reset input fields
             phoneNumberInput.value = '';
@@ -669,6 +750,8 @@
 
             // Display the modal overlay
             abaKhqrModalOverlay.classList.add('show');
+            console.log("Modal overlay element:", abaKhqrModalOverlay);
+            console.log("Modal overlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
         }
 
         /**
@@ -676,8 +759,9 @@
          * This function is called when the "Continue to QR Code" button is clicked.
          * @param {string} phone - The phone number entered by the user.
          * @param {string} location - The location entered by the user.
+         * @param {string} productName - The name of the product.
          */
-        function showQrCodeModal(phone, location) {
+        function showQrCodeModal(phone, location, productName) {
             if (isNaN(currentPaymentAmount)) {
                 console.error('Invalid amount for QR code display.');
                 modalAmountDisplay.textContent = 'N/A ដុល្លារ';
@@ -687,6 +771,7 @@
 
             displayPhoneNumber.textContent = phone;
             displayLocation.textContent = location;
+            displayProductName.textContent = productName; // Display the product name
 
             // Hide input section, show QR section
             paymentInputSection.classList.add('hidden');
@@ -700,11 +785,12 @@
 
             if (phoneNumber === '' || location === '') {
                 // Using a custom message box would be better than alert() in a real app
+                // For now, using alert as per original code, but will suggest improvement.
                 alert('សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងរបស់អ្នក។'); // Please enter your phone number and location.
                 return;
             }
 
-            showQrCodeModal(phoneNumber, location);
+            showQrCodeModal(phoneNumber, location, currentProductName);
         });
 
         /**
@@ -715,11 +801,17 @@
         }
 
         /**
-         * Simulates a payment confirmation and then triggers the print dialog.
-         * In a real application, this would only be called AFTER a successful
-         * payment confirmation from the payment gateway's backend.
+         * Simulates a payment confirmation, saves the order to Firestore,
+         * and then triggers the print dialog.
          */
-        function simulatePaymentAndPrint() {
+        async function simulatePaymentAndPrint() {
+            // Get the data to save
+            const phoneNumber = phoneNumberInput.value.trim();
+            const location = locationInput.value.trim();
+
+            // Save order to Firestore
+            await saveOrderToFirestore(currentProductName, currentPaymentAmount, phoneNumber, location);
+
             // Show payment confirmed message with "Done You ready the pay money"
             paymentStatusMessage.textContent = 'រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ'; // Translated
             paymentStatusMessage.classList.remove('hidden');
@@ -888,6 +980,13 @@
                 }
             });
         }
+
+        // Expose functions to the global scope so HTML onclick attributes can access them
+        window.openPaymentInputModal = openPaymentInputModal;
+        window.closeABAModal = closeABAModal;
+        window.simulatePaymentAndPrint = simulatePaymentAndPrint;
+        window.showAllContent = showAllContent;
+        window.filterByCategory = filterByCategory;
     </script>
 </body>
 </html>
