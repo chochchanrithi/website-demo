@@ -190,15 +190,11 @@
     <!-- Main Content of the Website -->
     <div id="main-content">
         <header class="w-full bg-blue-700 text-white p-4 text-center shadow-md">
-            <h1 class="text-xl sm:text-2xl font-bold">ភីជី៧ ម៉ាត (PG7 Market)</h1>
-            <p class="text-md mt-1">ហាងទំនិញគ្រប់មុខសម្រាប់ភេសជ្ជៈស្រស់ៗរបស់អ្នក!</p> <!-- Your one-stop shop for fresh beverages! -->
-            <!-- Search Bar -->
-            <div class="mt-4 flex justify-center">
-                <input type="text" id="search-input" placeholder="ស្វែងរកផលិតផល..." class="p-2 rounded-l-lg text-gray-800 w-1/2 md:w-1/3 focus:outline-none"> <!-- Search products... -->
-                <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg font-semibold transition-colors duration-300">
-                    ស្វែងរក
-                </button> <!-- Search -->
-            </div>
+    <h1 class="text-xl sm:text-2xl font-bold">មីនី ៧ ម៉ាត (MiNi 7 Market)</h1>
+    <p class="text-md mt-1">ហាងទំនិញគ្រប់មុខសម្រាប់អ្នក!</p> <div class="mt-4 flex justify-center">
+        <input type="text" id="search-input" placeholder="ស្វែងរកផលិតផល..." class="p-2 rounded-l-lg text-gray-800 w-1/2 md:w-1/3 focus:outline-none"> <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg font-semibold transition-colors duration-300">
+            ស្វែងរក
+        </button> </div>
             <!-- Navigation Buttons -->
             <div class="mt-4 flex justify-center space-x-4">
                 <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="showAllContent()">
@@ -219,14 +215,12 @@
 
         <main class="flex-grow container mx-auto p-6 lg:p-8 max-w-6xl">
             <!-- New Introduction Section -->
-            <section class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
-                <div class="flex flex-col items-center justify-center mb-4">
-                    <img src="photo_2025-06-27_10-26-54.jpg" alt="PG7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4 h-48 object-cover">
-                    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">សូមស្វាគមន៍មកកាន់ទីផ្សាររបស់ខ្ញុំ</h2> <!-- Welcome To My Market -->
-                    <p class="text-gray-600 text-lg leading-relaxed mt-2">
-                        អ្នកអាចស្វែងរកទំនិញនៅទីនេះ។
-                    </p> <!-- You Can Find Materials. -->
-                </div>
+            <section class="bg-white rounded-xl shadow-md p-8 mb-16 text-center">
+               <div class="flex flex-col items-center justify-center mb-4">
+            <img src="photo_2025-07-09_19-15-11.jpg" alt="MiNi 7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4 h-48 object-cover">
+            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">សូមស្វាគមន៍មកកាន់ទីផ្សារ MiNi 7 Market</h2> <p class="text-gray-600 text-lg leading-relaxed mt-2">
+                អ្នកអាចស្វែងរកទំនិញនៅទីផ្សារ MiNi 7 Market។
+            </p> </div>
                 <div class="mt-6">
                     <button id="find-now-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="testButtonClick()">
                         ស្វែងរកឥឡូវនេះ
@@ -528,6 +522,47 @@
                         ទិញឥឡូវនេះ
                     </button> <!-- Buy Now -->
                 </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.thefishsite.com/fish/articles/processing/salmon-fillet.jpeg?width=650&height=0" alt="Shrimp" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រីសាលម៉ុន</h3> <!-- Shrimp -->
+                    <p class="text-gray-600 mb-4">បង្គាស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <!-- Fresh shrimp, easy to cook for seafood dishes. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$15.00 / kg</span>
+                    <button onclick="openPaymentInputModal('15.00', 'Shrimp')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPi01XiXAkqSOuNY3nyp3br6bZ8yJI36ZzbQ&s" alt="Shrimp" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រីធូណា</h3> <!-- Shrimp -->
+                    <p class="text-gray-600 mb-4">បង្គាស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <!-- Fresh shrimp, easy to cook for seafood dishes. -->
+                    <span class="text-blue-600 text-2xl font-bold mb-4">$18.00 / kg</span>
+                    <button onclick="openPaymentInputModal('15.00', 'Shrimp')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                        ទិញឥឡូវនេះ
+                    </button> <!-- Buy Now -->
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/2271348000009h.jpg" alt="Squid Tubes" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">មឹកបំពង់</h3> <p class="text-gray-600 mb-4">មឹកបំពង់ស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$11.00 / kg</span>
+    <button onclick="openPaymentInputModal('11.00', 'Squid Tubes')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+        ទិញឥឡូវនេះ
+    </button> </div>
+    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <!-- Placeholder image for "Dependent Squid" -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpBVY3KDQ-IEP4t3qFGMECvrZUNwPqkre-LQ&s" alt="Dependent Squid" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">មឹកពឹងពាង</h3> <!-- Dependent Squid -->
+    <p class="text-gray-600 mb-4">មឹកពឹងពាង ស្រស់ៗ សម្រាប់មុខម្ហូបពិសេស។</p> <!-- Fresh dependent squid for special dishes. -->
+    <span class="text-blue-600 text-2xl font-bold mb-4">$15.00 / kg</span>
+    <button onclick="openPaymentInputModal('15.00', 'Dependent Squid')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+        ទិញឥឡូវនេះ
+    </button> <!-- Buy Now -->
+</div>
+<div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNitcOmqCx6kqPOOJsZ06Bz4pbOYwicTzdag&s" alt="Oysters" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">អយស្ទ័រ</h3> <p class="text-gray-600 mb-4">អយស្ទ័រស្រស់ៗ រសជាតិឆ្ងាញ់ សម្រាប់មុខម្ហូបសមុទ្រ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$18.50 / kg</span>
+    <button onclick="openPaymentInputModal('18.50', 'Oysters')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+        ទិញឥឡូវនេះ
+    </button> </div>
+                
             </section>
         </main>
 
