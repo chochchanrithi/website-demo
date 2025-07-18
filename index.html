@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PG7 Market</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>MiNi 7 Market</title> <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -187,51 +186,49 @@
 </head>
 <body>
 
-    <!-- Main Content of the Website -->
     <div id="main-content">
         <header class="w-full bg-blue-700 text-white p-4 text-center shadow-md">
-    <h1 class="text-xl sm:text-2xl font-bold">មីនី ៧ ម៉ាត (MiNi 7 Market)</h1>
-    <p class="text-md mt-1">ហាងទំនិញគ្រប់មុខសម្រាប់អ្នក!</p> <div class="mt-4 flex justify-center">
-        <input type="text" id="search-input" placeholder="ស្វែងរកផលិតផល..." class="p-2 rounded-l-lg text-gray-800 w-1/2 md:w-1/3 focus:outline-none"> <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg font-semibold transition-colors duration-300">
-            ស្វែងរក
-        </button> </div>
-            <!-- Navigation Buttons -->
+            <div class="flex items-center justify-center space-x-2">
+                <img src="d:\pg7\Untitled design.png" alt="MiNi 7 Market Logo" class="h-10 w-auto"> <h1 class="text-xl sm:text-2xl font-bold">មីនី ៧ ម៉ាត (MiNi 7 Market)</h1>
+            </div>
+            <p class="text-md mt-1">ហាងទំនិញគ្រប់មុខសម្រាប់អ្នក!</p>
+            <div class="mt-4 flex justify-center">
+                <input type="text" id="search-input" placeholder="ស្វែងរកផលិតផល..." class="p-2 rounded-l-lg text-gray-800 w-1/2 md:w-1/3 focus:outline-none">
+                <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg font-semibold transition-colors duration-300">
+                    ស្វែងរក
+                </button>
+            </div>
             <div class="mt-4 flex justify-center space-x-4">
                 <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="showAllContent()">
                     ទំព័រដើម
-                </button> <!-- Home -->
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('drink & beer')">
+                </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('drink & beer')">
                     ភេសជ្ជៈ
-                </button> <!-- Drink -->
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('vegetables')">
+                </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('vegetables')">
                     បន្លែ
-                </button> <!-- Vegetables -->
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('meat')">
+                </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" onclick="filterByCategory('meat')">
                     សាច់
-                </button> <!-- Meat -->
-            </div>
-            <!-- End Navigation Buttons -->
-        </header>
+                </button> </div>
+            </header>
 
         <main class="flex-grow container mx-auto p-6 lg:p-8 max-w-6xl">
-            <!-- New Introduction Section -->
-            <section class="bg-white rounded-xl shadow-md p-8 mb-16 text-center">
-               <div class="flex flex-col items-center justify-center mb-4">
-            <img src="photo_2025-07-09_19-15-11.jpg" alt="MiNi 7 Market Logo" class="max-w-xs sm:max-w-sm lg:max-w-md h-auto mb-4 h-48 object-cover">
-            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">សូមស្វាគមន៍មកកាន់ទីផ្សារ MiNi 7 Market</h2> <p class="text-gray-600 text-lg leading-relaxed mt-2">
+    <section class="bg-white rounded-xl shadow-md p-6 h-screen flex flex-col justify-end">
+        <div class="flex flex-col items-center justify-center mb-auto">
+        <img src="photo_2025-07-16_10-22-48.png" alt="MiNi 7 Market Logo" class="object-cover" width="441" height="461">
+        </div>
+        <div class="text-center mt-auto"> <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">សូមស្វាគមន៍មកកាន់ទីផ្សារ MiNi 7 Market</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mt-2">
                 អ្នកអាចស្វែងរកទំនិញនៅទីផ្សារ MiNi 7 Market។
-            </p> </div>
-                <div class="mt-6">
-                    <button id="find-now-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="testButtonClick()">
-                        ស្វែងរកឥឡូវនេះ
-                    </button> <!-- Find Now -->
-                </div>
-            </section>
+            </p>
+            <div class="mt-6">
+                <button id="find-now-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="testButtonClick()">
+                    ស្វែងរកឥឡូវនេះ
+                </button>
+            </div>
+        </div>
+    </section>
 
-            <!-- Product Sections -->
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Drink & Beer">ភេសជ្ជៈ </h2> <!-- Drink & Beer -->
-            <section class="product-grid-container" data-section-category="drink & beer">
-                
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Drink & Beer">ភេសជ្ជៈ </h2> <section class="product-grid-container" data-section-category="drink & beer">
+
   <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJpyvrfIXJN7qZkF8ooO5AWb0IfSDHs5Vhg&s" alt="Passion Fruit Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Passion Fruit Drink</h3>
@@ -294,44 +291,31 @@
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://s3.ap-southeast-1.wasabisys.com/sliquors3/wp-content/uploads/2020/07/Red-Bull-250ml-01.png" alt="Red Bull Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Red Bull Energy Drink</h3> <!-- Grape Juice -->
-                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលទ្រង់ទ្រាយម៉ოსខេត្តស្ករនិងដែកសារធាតុ B‑vitamins ទឹកកក និង taurine។</p> <!-- Delicious and refreshing grape juice, a taste of natural goodness. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Red Bull Energy Drink</h3> <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលទ្រង់ទ្រាយម៉ុសខេត្តស្ករនិងដែកសារធាតុ B‑vitamins ទឹកកក និង taurine។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
                     <button onclick="openPaymentInputModal('0.65', 'Red Bull Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.championgroup.com.kh/wp-content/uploads/2025/05/champion-Green-768x768.png" alt="Champion Green Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Champion Green Energy Drink</h3> <!-- Milk -->
-                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលបៃតងថ្មីពី Champion Group ប្រើបច្ចេកវិទ្យាជាតិក្រុមសហព័ន្ធអ៊ឺរ៉ុប។</p> <!-- Fresh and nutritious milk. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Champion Green Energy Drink</h3> <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលបៃតងថ្មីពី Champion Group ប្រើបច្ចេកវិទ្យាជាតិក្រុមសហព័ន្ធអ៊ឺរ៉ុប។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
                     <button onclick="openPaymentInputModal('0.65', 'Champion Green Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://cdn.s-liquor.com.kh/sliquors3/wp-content/uploads/2022/11/Sting.jpg?strip=all&lossy=1&webp=85&avif=80&ssl=1" alt="Sting Red (Strawberry)" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sting Red (Strawberry)</h3> <!-- Cambodia Water -->
-                    <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលរសជាតិស្ត្របឺរី មាន caffeine ប្រហែល 72 mg/250 ml និងត្រាំតែមធ្យម។</p> <!-- Fresh and hydrating Cambodian water. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sting Red (Strawberry)</h3> <p class="text-gray-600 mb-4">ភេសជ្ជៈថាមពលរសជាតិស្ត្របឺរី មាន caffeine ប្រហែល 72 mg/250 ml និងត្រាំតែមធ្យម។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
                     <button onclick="openPaymentInputModal('0.65', 'Sting Red (Strawberry)')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMuzYGVMn8fyIBX20noPAtO_v0cuFYks0P5A&sg" alt="Wurkz Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Wurkz Energy Drink</h3> <!-- Ganzberg Beer -->
-                    <p class="text-gray-600 mb-4">ផលិតផលមីណ្ឌមកពីកម្ពុជាដែលបានទទួល Gold និង Silver Award ពី Monde Selection ជាមួយ B‑vitamins ទាំងឡាយ។</p> <!-- Crisp and refreshing Ganzberg beer. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Wurkz Energy Drink</h3> <p class="text-gray-600 mb-4">ផលិតផលមីណ្ឌមកពីកម្ពុជាដែលបានទទួល Gold និង Silver Award ពី Monde Selection ជាមួយ B‑vitamins ទាំងឡាយ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.65</span>
                     <button onclick="openPaymentInputModal('0.65', 'Wurkz Energy Drink')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>  <!-- Krud Energy Drink -->
-  <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    </button> </div>  <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
     <img src="https://www.monde-selection.com/wp-content/uploads/2023/04/1039997.png" alt="Krud Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Krud Energy Drink</h3>
     <p class="text-gray-600 mb-4">ស្រស់ប្លែក និងផ្តល់ថាមពលបរិច្ច័យ។</p>
@@ -341,7 +325,6 @@
     </button>
   </div>
 
-  <!-- Vigor Power Energy Drink -->
   <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
     <img src="https://www.drgcambodia.com/wp-content/uploads/2021/11/vigor-power-energy-drink-cambodia.jpg" alt="Vigor Power Energy Drink" class="rounded-lg mb-4 w-full h-48 object-cover">
     <h3 class="text-xl font-semibold text-gray-800 mb-2">Vigor Power Energy Drink</h3>
@@ -351,607 +334,397 @@
       ទិញពេលនេះ
     </button>
   </div>
-  
+
 
             </section>
 
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Vegetables">បន្លែ</h2> <!-- Vegetables -->
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="vegetables">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Vegetables">បន្លែ</h2> <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="vegetables">
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_IjOiPxkpz-0V9UCzKmAZae1EFiGsYd5RA&s" alt="Broccoli" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្កាខាត់ណាខៀវស្រស់</h3> <!-- Fresh Broccoli -->
-                    <p class="text-gray-600 mb-4">ផ្កាខាត់ណាខៀវក្នុងស្រុក សរីរាង្គ ល្អសម្រាប់ចំហុយ ឬឆា។</p> <!-- Locally sourced, organic broccoli, great for steaming or stir-fries. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$3.99 / kg</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្កាខាត់ណាខៀវស្រស់</h3> <p class="text-gray-600 mb-4">ផ្កាខាត់ណាខៀវក្នុងស្រុក សរីរាង្គ ល្អសម្រាប់ចំហុយ ឬឆា។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$3.99 / kg</span>
                     <button onclick="openPaymentInputModal('3.99', 'Broccoli')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://5.imimg.com/data5/EX/PC/MY-51545753/selection_587.png" alt="Carrots" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ការ៉ុតស្រស់</h3> <!-- Crisp Carrots -->
-                    <p class="text-gray-600 mb-4">ការ៉ុតផ្អែម និងស្រួយ ល្អឥតខ្ចោះសម្រាប់ញ៉ាំ ឬចម្អិន។</p> <!-- Sweet and crunchy carrots, perfect for snacking or cooking. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / kg</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ការ៉ុតស្រស់</h3> <p class="text-gray-600 mb-4">ការ៉ុតផ្អែម និងស្រួយ ល្អឥតខ្ចោះសម្រាប់ញ៉ាំ ឬចម្អិន។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / kg</span>
                     <button onclick="openPaymentInputModal('1.50', 'Carrots')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://cdn.shopify.com/s/files/1/0824/4857/files/spinach_large.jpg?v=1490961229" alt="Spinach" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃខ្មៅសរីរាង្គ</h3> <!-- Organic Spinach -->
-                    <p class="text-gray-600 mb-4">ស្លឹកស្ពៃខ្មៅស្រស់ សម្បូរជីវជាតិសម្រាប់សាឡាដ និងអាហាររបស់អ្នក។</p> <!-- Fresh, nutrient-rich spinach leaves for your salads and meals. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$0.50 / bunch</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃខ្មៅសរីរាង្គ</h3> <p class="text-gray-600 mb-4">ស្លឹកស្ពៃខ្មៅស្រស់ សម្បូរជីវជាតិសម្រាប់សាឡាដ និងអាហាររបស់អ្នក។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.50 / bunch</span>
                     <button onclick="openPaymentInputModal('0.50', 'Spinach')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://bjs.scene7.com/is/image/bjs/15571?$bjs-Initial600$" alt="Cabbage" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃក្តោប</h3> <!-- Cabbage -->
-                    <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជsន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <!-- Versatile and fresh cabbage, perfect for coleslaw or stir-fries. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / head</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ស្ពៃក្តោប</h3> <p class="text-gray-600 mb-4">ស្ពៃក្តោបស្រស់ និងមានប្រយោជsន៍ ល្អឥតខ្ចោះសម្រាប់ coleslaw ឬឆា។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$1.50 / head</span>
                     <button onclick="openPaymentInputModal('1.50', 'Cabbage')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/07/Chinese-eggplant-shutterstock_2033421.jpg" alt="Eggplant" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រប់</h3> <!-- Eggplant -->
-                    <p class="text-gray-600 mb-4">ត្រប់ទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់ដុត ឬដុតនំ។</p> <!-- Smooth and tender eggplant, great for grilling or baking. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.75 / kg</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រប់</h3> <p class="text-gray-600 mb-4">ត្រប់ទន់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់ដុត ឬដុតនំ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$1.75 / kg</span>
                     <button onclick="openPaymentInputModal('1.75', 'Eggplant')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://www.telegraph.co.uk/content/dam/briefs/2025/04/30/TELEMMGLPICT000421134667_17460223214200_trans_NvBQzQNjv4BqNJ-LQvq2P5DIswYl2XeNFI064TIrcX_7tT0sGCZw0_A.jpeg?imwidth=640" alt="Potato" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ដំឡូងបារាំង</h3> <!-- Potato -->
-                    <p class="text-gray-600 mb-4">ដំឡូងបារាំងចម្រុះ ល្អឥតខ្ចោះសម្រាប់បុក ដុតនំ ឬចៀន។</p> <!-- Versatile potatoes, perfect for mashing, baking, or frying. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$3.50 / kg</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ដំឡូងបារាំង</h3> <p class="text-gray-600 mb-4">ដំឡូងបារាំងចម្រុះ ល្អឥតខ្ចោះសម្រាប់បុក ដុតនំ ឬចៀន។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$3.50 / kg</span>
                     <button onclick="openPaymentInputModal('3.50', 'Potato')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
                     <img src="https://seedsofplenty.com.au/cdn/shop/products/V-OTH-01p1_grande.jpg?v=1670214705" alt="Parsnip" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ឆៃផាវ</h3> <!-- Parsnip -->
-                    <p class="text-gray-600 mb-4">ផាសនីបផ្អែម និងមានរសជាតិដី ល្អសម្រាប់អាំង ឬស្ងោរ។</p> <!-- Sweet and earthy parsnips, ideal for roasting or stews. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.29 / kg</span>
-                    <button onclick="openPaymentInputModal('1.29', 'Parsnip')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ឆៃផាវ</h3> <p class="text-gray-600 mb-4">ផាសនីបផ្អែម និងមានរសជាតិដី ល្អសម្រាប់អាំង ឬស្ងោរ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$2.20 / kg</span>
+                    <button onclick="openPaymentInputModal('2.20', 'Parsnip')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT19UUTLodCwKT1sEjgfdbWn8WLfiJ3D2d4Q&s" alt="Cucumber" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រសក់</h3> <!-- Cucumber -->
-                    <p class="text-gray-600 mb-4">ត្រសក់ស្រស់ និងស្រួយ ល្អឥតខ្ចោះសម្រាប់សាឡាដ និងអាហារសម្រន់។</p> <!-- Crisp and refreshing cucumbers, perfect for salads and snacks. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                    <button onclick="openPaymentInputModal('1.20', 'Cucumber')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://s5.kh1.co/d7/d7d4cea66e93c6dd2f1b16e79ead46b2542950d8.jpg" alt="Ginger" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ញី</h3> <p class="text-gray-600 mb-4">ខ្ញីស្រស់ មានរសជាតិហឹរឆ្ងាញ់ សម្រាប់ធ្វើម្ហូប ឬតែ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.70 / 100g</span>
+                    <button onclick="openPaymentInputModal('0.70', 'Ginger')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://www.lovefoodhatewaste.com/sites/default/files/styles/twitter_card_image/public/2022-07/Mushroom-sh1679028943.jpg.webp?itok=EPN3UR3M" alt="Mushroom" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ផ្សិត</h3> <!-- Mushroom -->
-                    <p class="text-gray-600 mb-4">ផ្សិតស្រស់ និងមានរសជាតិឆ្ងាញ់ ល្អសម្រាប់បន្ថែមទៅក្នុងមុខម្ហូបណាមួយ។</p> <!-- Fresh and flavorful mushrooms, great for adding to any dish. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button onclick="openPaymentInputModal('2.55', 'Mushroom')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxzUlrfnxSrwA6e3ksStmeEN7b3RIoWjRxyw&s" alt="Bell Pepper" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ម្ទេសប្លោក</h3> <p class="text-gray-600 mb-4">ម្ទេសប្លោកស្រស់ ពណ៌ស្រស់ឆើតឆាយ និងមានរសជាតិផ្អែម ល្អសម្រាប់សាឡាដ ឬឆា។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
+                    <button onclick="openPaymentInputModal('1.20', 'Bell Pepper')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://www.jiomart.com/images/product/original/590003531/ginger-indian-200-g-product-images-o590003531-p590003531-1-202408070949.jpg?im=Resize=(420,420)" alt="Ginger" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ញី</h3> <!-- Ginger -->
-                    <p class="text-gray-600 mb-4">ខ្ញីក្រអូប និងមានរសជាតិហឹរ ល្អឥតខ្ចោះសម្រាប់ចម្អិនអាហារ ឬតែ។</p> <!-- Aromatic and zesty ginger, perfect for cooking or tea. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.40 / kg</span>
-                    <button onclick="openPaymentInputModal('1.40', 'Ginger')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18JdTa_4vi7dPnqWqzLXGblBsUtN-6oIrEA&s" alt="Onion" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ទឹមបារាំង</h3> <p class="text-gray-600 mb-4">ខ្ទឹមបារាំងស្រស់ សម្រាប់បន្ថែមរសជាតិដល់មុខម្ហូបរបស់អ្នក។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$1.00 / kg</span>
+                    <button onclick="openPaymentInputModal('1.00', 'Onion')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://www.shutterstock.com/image-photo/sweet-pepper-red-green-yellow-260nw-1493482298.jpg" alt="Pepper" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ម្ទេសប្លោក</h3> <!-- Bell Pepper -->
-                    <p class="text-gray-600 mb-4">ម្ទេសប្លោកចម្រុះពណ៌ និងផ្អែម ល្អសម្រាប់ឆា និងសាឡាដ។</p> <!-- Colorful and sweet bell peppers, ideal for stir-fries and salads. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$2.55 / kg</span>
-                    <button onclick="openPaymentInputModal('2.55', 'Pepper')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/products/20241224/1735019386-14339.jpg" alt="Garlic" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ខ្ទឹមស</h3> <p class="text-gray-600 mb-4">ខ្ទឹមសស្រស់ សម្រាប់បន្ថែមរសជាតិឈ្ងុយឆ្ងាញ់ដល់មុខម្ហូបរបស់អ្នក។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.80 / 100g</span>
+                    <button onclick="openPaymentInputModal('0.80', 'Garlic')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZYT1tOS5o7hV4hje57tDhYLYd-f6WwZdDpg&s" alt="Sliced Papaya" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ល្ហុង</h3> <!-- Ripe Papaya Slices -->
-                    <p class="text-gray-600 mb-4">ចំណិតល្ហុងទុំស្រស់ៗ ងាយស្រួលញ៉ាំ សម្បូរវីតាមីន។</p> <!-- Ready-to-eat sweet papaya slices, rich in vitamins. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$1.20 / kg</span>
-                    <button onclick="openPaymentInputModal('1.20', 'Sliced Papaya')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF6uTMq8LogqEYRCZFal-XUqjGLbdP6IAtDA&s" alt="Lettuce" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាឡាដ</h3> <p class="text-gray-600 mb-4">សាឡាដស្រស់ សម្រាប់ធ្វើសាឡាដ ឬប៊ឺហ្គឺ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$0.75 / head</span>
+                    <button onclick="openPaymentInputModal('0.75', 'Lettuce')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
             </section>
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Meat">សាច់</h2> <!-- Meat -->
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="meat">
+
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-8 text-center" data-section-heading="Meat">សាច់</h2> <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-section-category="meat">
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdh6fiqlhbWZIPs4KDabbJk75FWuu91eiDNQ&s" alt="Chicken" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់មាន់ស្រស់</h3> <!-- Fresh Chicken -->
-                    <p class="text-gray-600 mb-4">សាច់មាន់គុណភាពខ្ពស់ ល្អឥតខ្ចោះសម្រាប់ដុត ឬចៀន។</p> <!-- High-quality fresh chicken, perfect for grilling or frying. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$4.50 / kg</span>
-                    <button onclick="openPaymentInputModal('4.50', 'Chicken')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://images.khmer24.co/profiles/pictures/21-04-27/p70161608136253_561420_1619498195_95.jpg" alt="Chicken Breast" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់មាន់</h3> <p class="text-gray-600 mb-4">សាច់មាន់ស្រស់ សម្រាប់ធ្វើម្ហូបជាច្រើនប្រភេទ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$5.50 / kg</span>
+                    <button onclick="openPaymentInputModal('5.50', 'Chicken Breast')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://cdn.britannica.com/68/143268-050-917048EA/Beef-loin.jpg" alt="Beef" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់គោ</h3> <!-- Beef -->
-                    <p class="text-gray-600 mb-4">សាច់គោគ្មានខ្លាញ់ ស្រស់ ល្អសម្រាប់ស្ងោរ ឬអាំង។</p> <!-- Lean, fresh beef, great for stewing or roasting. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$8.00 / kg</span>
-                    <button onclick="openPaymentInputModal('8.00', 'Beef')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://niront.com/cdn/shop/files/product-350123.jpg?v=1723222656" alt="Beef Steak" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់គោ</h3> <p class="text-gray-600 mb-4">សាច់គោស្រស់ សម្រាប់អាំង ឬបំពង។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$12.00 / kg</span>
+                    <button onclick="openPaymentInputModal('12.00', 'Beef Steak')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4bxNUQYi-nLZLdQ4TJcIL0YqQ7oaxeYHYrg&s" alt="Pork" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ជ្រូក</h3> <!-- Pork -->
-                    <p class="text-gray-600 mb-4">សាច់ជ្រូកស្រស់ និងទន់ ល្អឥតខ្ចោះសម្រាប់ចម្អិនអាហារប្រចាំថ្ងៃ។</p> <!-- Fresh and tender pork, perfect for everyday cooking. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$5.50 / kg</span>
-                    <button onclick="openPaymentInputModal('5.50', 'Pork')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3NqMls-O0Co7j8a7UBJGMRhp_tqIthXn3Fg&s" alt="Salmon Fillet" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រីសាលម៉ុន</h3> <p class="text-gray-600 mb-4">ត្រីសាលម៉ុនស្រស់ សម្បូរបែបដោយ Omega-3 ល្អសម្រាប់សុខភាព។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$15.00 / kg</span>
+                    <button onclick="openPaymentInputModal('15.00', 'Salmon Fillet')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
+                    </button> </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2cjq8KUuFZjtLgoww6PiDMpOyK-ZH-zW8A&s" alt="Lamb" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ចៀម</h3> <!-- Lamb -->
-                    <p class="text-gray-600 mb-4">សាច់ចៀមគុណភាពខ្ពស់ សម្រាប់មុខម្ហូបពិសេសរបស់អ្នក។</p> <!-- Premium lamb, ideal for your special dishes. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$12.00 / kg</span>
-                    <button onclick="openPaymentInputModal('12.00', 'Lamb')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                    <img src="https://camhappymart.com/storage/app/public/product/2023-01-13-63c0d2dba7d0b.png" alt="Pork Loin" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">សាច់ជ្រូក</h3> <p class="text-gray-600 mb-4">សាច់ជ្រូកស្រស់ សម្រាប់ធ្វើម្ហូបផ្សេងៗ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$5.50 / kg</span>
+                    <button onclick="openPaymentInputModal('5.50', 'Pork Loin')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                         ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Fish_in_basket.jpg/330px-Fish_in_basket.jpg" alt="Fish" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រី</h3> <!-- Fish -->
-                    <p class="text-gray-600 mb-4">ត្រីស្រស់ៗគ្រប់ប្រភេទ សម្រាប់អាហារសុខភាព។</p> <!-- Assorted fresh fish for healthy meals. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$6.50 / kg</span>
-                    <button onclick="openPaymentInputModal('6.50', 'Fish')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2jGZjnEjv_22RFJkqZFmZh6Ajol-3eLojwA&s" alt="Shrimp" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">បង្គា</h3> <!-- Shrimp -->
-                    <p class="text-gray-600 mb-4">បង្គាស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <!-- Fresh shrimp, easy to cook for seafood dishes. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$9.00 / kg</span>
-                    <button onclick="openPaymentInputModal('9.00', 'Shrimp')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://images.thefishsite.com/fish/articles/processing/salmon-fillet.jpeg?width=650&height=0" alt="Shrimp" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រីសាលម៉ុន</h3> <!-- Shrimp -->
-                    <p class="text-gray-600 mb-4">បង្គាស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <!-- Fresh shrimp, easy to cook for seafood dishes. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$15.00 / kg</span>
-                    <button onclick="openPaymentInputModal('15.00', 'Shrimp')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
-                 <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPi01XiXAkqSOuNY3nyp3br6bZ8yJI36ZzbQ&s" alt="Shrimp" class="rounded-lg mb-4 w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ត្រីធូណា</h3> <!-- Shrimp -->
-                    <p class="text-gray-600 mb-4">បង្គាស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <!-- Fresh shrimp, easy to cook for seafood dishes. -->
-                    <span class="text-blue-600 text-2xl font-bold mb-4">$18.00 / kg</span>
-                    <button onclick="openPaymentInputModal('15.00', 'Shrimp')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                        ទិញឥឡូវនេះ
-                    </button> <!-- Buy Now -->
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-    <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/2271348000009h.jpg" alt="Squid Tubes" class="rounded-lg mb-4 w-full h-48 object-cover">
-    <h3 class="text-xl font-semibold text-gray-800 mb-2">មឹកបំពង់</h3> <p class="text-gray-600 mb-4">មឹកបំពង់ស្រស់ ងាយស្រួលចម្អិន សម្រាប់មុខម្ហូបសមុទ្រ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$11.00 / kg</span>
-    <button onclick="openPaymentInputModal('11.00', 'Squid Tubes')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-        ទិញឥឡូវនេះ
-    </button> </div>
-    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-    <!-- Placeholder image for "Dependent Squid" -->
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpBVY3KDQ-IEP4t3qFGMECvrZUNwPqkre-LQ&s" alt="Dependent Squid" class="rounded-lg mb-4 w-full h-48 object-cover">
-    <h3 class="text-xl font-semibold text-gray-800 mb-2">មឹកពឹងពាង</h3> <!-- Dependent Squid -->
-    <p class="text-gray-600 mb-4">មឹកពឹងពាង ស្រស់ៗ សម្រាប់មុខម្ហូបពិសេស។</p> <!-- Fresh dependent squid for special dishes. -->
-    <span class="text-blue-600 text-2xl font-bold mb-4">$15.00 / kg</span>
-    <button onclick="openPaymentInputModal('15.00', 'Dependent Squid')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-        ទិញឥឡូវនេះ
-    </button> <!-- Buy Now -->
-</div>
-<div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNitcOmqCx6kqPOOJsZ06Bz4pbOYwicTzdag&s" alt="Oysters" class="rounded-lg mb-4 w-full h-48 object-cover">
-    <h3 class="text-xl font-semibold text-gray-800 mb-2">អយស្ទ័រ</h3> <p class="text-gray-600 mb-4">អយស្ទ័រស្រស់ៗ រសជាតិឆ្ងាញ់ សម្រាប់មុខម្ហូបសមុទ្រ។</p> <span class="text-blue-600 text-2xl font-bold mb-4">$18.50 / kg</span>
-    <button onclick="openPaymentInputModal('18.50', 'Oysters')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-        ទិញឥឡូវនេះ
-    </button> </div>
-                
+                    </button> </div>
             </section>
         </main>
 
-        <footer class="bg-gray-800 text-white p-6 mt-8 rounded-t-xl shadow-inner w-full">
-            <div class="container mx-auto text-center">
-                <p class="text-sm">&copy; 2025 ភីជី៧ ម៉ាត (PG7 Market). រក្សាសិទ្ធិគ្រប់យ៉ាង។</p> <!-- &copy; 2025 PG7 Market. All rights reserved. -->
-                <div class="flex justify-center space-x-6 mt-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">គោលការណ៍ឯកជនភាព</a> <!-- Privacy Policy -->
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">លក្ខខណ្ឌប្រើប្រាស់</a> <!-- Terms of Service -->
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">សំណួរគេសួរញឹកញាប់</a> <!-- FAQs -->
-                </div>
-            </div>
-        </footer>
+        <footer class="w-full bg-blue-700 text-white p-4 text-center mt-8 shadow-md">
+            <p>&copy; 2025 MiNi 7 Market. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p> </footer>
     </div>
 
-    <!-- ABA KHQR Modal Overlay - This is the main modal that handles the entire flow -->
-    <div id="abaKhqrModalOverlay" class="modal-overlay">
-        <div id="abaKhqrModalContent" class="modal-content">
-            <button class="modal-close-button" onclick="closeABAModal()">&times;</button>
+    <div id="paymentInputModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closePaymentInputModal()">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">បញ្ចូលចំនួនទឹកប្រាក់</h2>
+            <p id="productToPay" class="text-xl text-gray-700 mb-3"></p>
+            <p id="amountDue" class="text-2xl font-bold text-blue-600 mb-6"></p>
 
-            <!-- Step 1: Phone and Location Input -->
-            <div id="paymentInputSection" class="p-4">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">បញ្ចូលព័ត៌មានទំនាក់ទំនង</h2> <!-- Enter Contact Information -->
-                <div class="mb-4">
-                    <label for="phoneNumberInput" class="block text-gray-700 text-sm font-bold mb-2">លេខទូរស័ព្ទ:</label> <!-- Phone Number: -->
-                    <input type="tel" id="phoneNumberInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="បញ្ចូលលេខទូរស័ព្ទ"> <!-- Example: 012 345 678 -->
-                </div>
-                <div class="mb-6">
-                    <label for="locationInput" class="block text-gray-700 text-sm font-bold mb-2">ទីតាំង:</label> <!-- Location: -->
-                    <input type="text" id="locationInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="ទីតាង: ភូមិ​ ឃុំ ស្រុក ខេត្ត"> <!-- Example: Village, Commune, District, Province -->
-                </div>
-                <button id="continueToQrButton" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
-                    បន្តទៅ QR Code
-                </button> <!-- Continue to QR Code -->
-            </div>
+            <input type="number" id="paymentAmount" placeholder="បញ្ចូលចំនួនទឹកប្រាក់"
+                   class="w-full p-3 border border-gray-300 rounded-md mb-4 text-lg text-center" step="0.01">
 
-            <!-- Step 2: QR Code Display (Initially hidden) -->
-            <div id="qrCodeSection" class="hidden">
-                <h2 class="aba-khqr-header">ឃ្យូអរកូដ (KHQR)</h2> <!-- KHQR -->
-                <p id="paymentStatusMessage" class="text-green-600 text-lg font-semibold hidden">រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ</p> <!-- Done You ready the pay money -->
+            <p id="paymentStatusMessage" class="text-lg font-semibold text-center mb-4 hidden"></p>
 
-                <p class="aba-khqr-info">
-                    <span class="font-semibold">លេខទូរស័ព្ទ:</span> <span id="displayPhoneNumber"></span>
-                </p>
-                <p class="aba-khqr-info">
-                    <span class="font-semibold">ទីតាំង:</span> <span id="displayLocation"></span>
-                </p>
-                <p class="aba-khqr-info">
-                    <span class="font-semibold">ផលិតផល:</span> <span id="displayProductName"></span>
-                </p>
-
-                <p id="modalAmount" class="aba-khqr-amount">0.00 ដុល្លារ</p> <!-- 0.00 USD -->
-
-                <div class="aba-khqr-qr-container">
-                   <img src="photo_2025-06-27_10-14-51.jpg" alt="KHQR Code" onerror="this.onerror=null;this.src='https://placehold.co/250x250/000000/ffffff?text=Error+Loading+QR';">
-                </div>
-                
-                <button class="aba-khqr-print-button" onclick="simulatePaymentAndPrint()">
-                    បញ្ជាក់ការទូទាត់ & បោះពុម្ពបង្កាន់ដៃ
-                </button> <!-- Confirm Payment & Print Receipt -->
-            </div>
+            <button onclick="processPayment()"
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
+                បង់ប្រាក់
+            </button>
+            <button onclick="openPaymentMethodModal()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 mt-4">
+                ជ្រើសរើសវិធីបង់ប្រាក់
+            </button>
         </div>
     </div>
 
+    <div id="paymentMethodModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closePaymentMethodModal()">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">ជ្រើសរើសវិធីបង់ប្រាក់</h2>
+            <button onclick="showABAQR()"
+                    class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 mb-3">
+                ABA KHQR
+            </button>
+            <button onclick="showACLEDAQR()"
+                    class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 mb-3">
+                ACLEDA KHQR
+            </button>
+            <button onclick="showWingQR()"
+                    class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
+                Wing KHQR (Comming Soon)
+            </button>
+        </div>
+    </div>
+
+    <div id="abaKhqrModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeABAQR()">&times;</button>
+            <div class="aba-khqr-header">ABA KHQR</div>
+            <div class="aba-khqr-info">
+                <p>ឈ្មោះគណនី: <span class="font-semibold">MiNi 7 Market</span></p>
+                <p>លេខគណនី: <span class="font-semibold">003204990</span></p>
+            </div>
+            <div class="aba-khqr-amount" id="abaAmountDue"></div>
+            <div class="aba-khqr-qr-container">
+                <img src="https://placehold.co/250x250/E4002B/ffffff?text=ABA+QR+Code" alt="ABA KHQR Code">
+            </div>
+            <p class="aba-khqr-instructions">
+                សូមស្កេន ABA KHQR Code នេះដើម្បីបង់ប្រាក់។ <br>
+                បន្ទាប់ពីការបង់ប្រាក់រួចរាល់ សូមចុចប៊ូតុង "ព្រីនវិក្កយបត្រ"។
+            </p>
+            <button class="aba-khqr-print-button" onclick="printInvoice()">ព្រីនវិក្កយបត្រ</button>
+        </div>
+    </div>
+
+    <div id="acledaKhqrModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeACLEDAQR()">&times;</button>
+            <div class="aba-khqr-header" style="color: #005691;">ACLEDA KHQR</div> <div class="aba-khqr-info">
+                <p>ឈ្មោះគណនី: <span class="font-semibold">MiNi 7 Market</span></p>
+                <p>លេខគណនី: <span class="font-semibold">000123456789</span></p> </div>
+            <div class="aba-khqr-amount" id="acledaAmountDue"></div>
+            <div class="aba-khqr-qr-container">
+                <img src="https://placehold.co/250x250/005691/ffffff?text=ACLEDA+QR+Code" alt="ACLEDA KHQR Code">
+            </div>
+            <p class="aba-khqr-instructions">
+                សូមស្កេន ACLEDA KHQR Code នេះដើម្បីបង់ប្រាក់។ <br>
+                បន្ទាប់ពីការបង់ប្រាក់រួចរាល់ សូមចុចប៊ូតុង "ព្រីនវិក្កយបត្រ"។
+            </p>
+            <button class="aba-khqr-print-button" onclick="printInvoice()">ព្រីនវិក្កយបត្រ</button>
+        </div>
+    </div>
+
+
     <script>
-        // Global test function for direct onclick binding
-        window.testButtonClick = function() {
-            console.log("TEST: Find Now button was clicked! Basic JavaScript click is working.");
-            console.log("Test Click Registered!");
-        };
+        let currentProductPrice = 0;
+        let currentProductName = '';
 
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM Content Loaded. Initializing script.");
+        function openPaymentInputModal(price, name) {
+            currentProductPrice = parseFloat(price);
+            currentProductName = name;
+            document.getElementById('productToPay').textContent = `ផលិតផល: ${currentProductName}`;
+            document.getElementById('amountDue').textContent = `ចំនួនទឹកប្រាក់ដែលត្រូវបង់: $${currentProductPrice.toFixed(2)}`;
+            document.getElementById('paymentAmount').value = ''; // Clear previous input
+            document.getElementById('paymentStatusMessage').classList.add('hidden'); // Hide status message
+            document.getElementById('paymentInputModal').classList.add('show');
+        }
 
-            let currentPaymentAmount = 0; // Global variable to store the current amount
-            let currentProductName = ''; // Global variable to store the current product name
+        function closePaymentInputModal() {
+            document.getElementById('paymentInputModal').classList.remove('show');
+        }
 
-            // Get references to the new sections and elements
-            const abaKhqrModalOverlay = document.getElementById('abaKhqrModalOverlay');
-            console.log("Element check: abaKhqrModalOverlay:", abaKhqrModalOverlay);
-            const modalAmountDisplay = document.getElementById('modalAmount');
-            console.log("Element check: modalAmountDisplay:", modalAmountDisplay);
+        function processPayment() {
+            const paymentAmountInput = document.getElementById('paymentAmount');
+            const paymentAmount = parseFloat(paymentAmountInput.value);
             const paymentStatusMessage = document.getElementById('paymentStatusMessage');
-            console.log("Element check: paymentStatusMessage:", paymentStatusMessage);
-            const paymentInputSection = document.getElementById('paymentInputSection');
-            console.log("Element check: paymentInputSection:", paymentInputSection);
-            const qrCodeSection = document.getElementById('qrCodeSection');
-            console.log("Element check: qrCodeSection:", qrCodeSection);
-            const phoneNumberInput = document.getElementById('phoneNumberInput');
-            console.log("Element check: phoneNumberInput:", phoneNumberInput);
-            const locationInput = document.getElementById('locationInput');
-            console.log("Element check: locationInput:", locationInput);
-            const continueToQrButton = document.getElementById('continueToQrButton');
-            console.log("Element check: continueToQrButton:", continueToQrButton);
-            const displayPhoneNumber = document.getElementById('displayPhoneNumber');
-            console.log("Element check: displayPhoneNumber:", displayPhoneNumber);
-            const displayLocation = document.getElementById('displayLocation');
-            console.log("Element check: displayLocation:", displayLocation);
-            const displayProductName = document.getElementById('displayProductName'); // New element for product name
-            console.log("Element check: displayProductName:", displayProductName);
 
-            /**
-             * Opens the initial payment input modal.
-             * This function is called when a product's "Buy Now" button is clicked.
-             * @param {string | number} amount - The amount to be paid.
-             * @param {string} productName - The name of the product being purchased.
-             */
-            window.openPaymentInputModal = function(amount, productName) { // Expose globally for onclick
-                console.log("openPaymentInputModal called for product:", productName, "amount:", amount);
-                currentPaymentAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
-                currentProductName = productName; // Store the product name
-
-                // Reset input fields
-                if (phoneNumberInput) phoneNumberInput.value = '';
-                if (locationInput) locationInput.value = '';
-
-                // Hide QR section, show input section
-                if (qrCodeSection) {
-                    qrCodeSection.classList.add('hidden');
-                    console.log("Modal state: qrCodeSection has 'hidden' class:", qrCodeSection.classList.contains('hidden'));
-                }
-                if (paymentInputSection) {
-                    paymentInputSection.classList.remove('hidden');
-                    console.log("Modal state: paymentInputSection has 'hidden' class:", paymentInputSection.classList.contains('hidden'));
-                    console.log("Modal state: paymentInputSection display style:", window.getComputedStyle(paymentInputSection).display);
-                }
-
-                // Hide any previous payment status message
-                if (paymentStatusMessage) {
-                    paymentStatusMessage.classList.add('hidden');
-                    console.log("Modal state: paymentStatusMessage has 'hidden' class:", paymentStatusMessage.classList.contains('hidden'));
-                }
-
-                // Display the modal overlay
-                if (abaKhqrModalOverlay) {
-                    abaKhqrModalOverlay.classList.add('show');
-                    console.log("Modal state: abaKhqrModalOverlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
-                    console.log("Modal state: abaKhqrModalOverlay display style:", window.getComputedStyle(abaKhqrModalOverlay).display);
-                }
-            };
-
-            /**
-             * Shows the QR code section of the modal after input is provided.
-             * This function is called when the "Continue to QR Code" button is clicked.
-             * @param {string} phone - The phone number entered by the user.
-             * @param {string} location - The location entered by the user.
-             * @param {string} productName - The name of the product.
-             */
-            function showQrCodeModal(phone, location, productName) {
-                console.log("showQrCodeModal called.");
-                if (isNaN(currentPaymentAmount)) {
-                    console.error('Invalid amount for QR code display.');
-                    if (modalAmountDisplay) modalAmountDisplay.textContent = 'N/A ដុល្លារ';
-                } else {
-                    if (modalAmountDisplay) modalAmountDisplay.textContent = `${currentPaymentAmount.toFixed(2)} ដុល្លារ`;
-                }
-
-                if (displayPhoneNumber) displayPhoneNumber.textContent = phone;
-                if (displayLocation) displayLocation.textContent = location;
-                if (displayProductName) displayProductName.textContent = productName; // Display the product name
-
-                // Hide input section, show QR section
-                if (paymentInputSection) {
-                    paymentInputSection.classList.add('hidden');
-                    console.log("Modal state: paymentInputSection has 'hidden' class:", paymentInputSection.classList.contains('hidden'));
-                    console.log("Modal state: paymentInputSection display style:", window.getComputedStyle(paymentInputSection).display);
-                }
-                if (qrCodeSection) {
-                    qrCodeSection.classList.remove('hidden');
-                    console.log("Modal state: qrCodeSection has 'hidden' class:", qrCodeSection.classList.contains('hidden'));
-                    console.log("Modal state: qrCodeSection display style:", window.getComputedStyle(qrCodeSection).display);
-                }
-                console.log("Modal state: QR section shown, input section hidden.");
+            if (isNaN(paymentAmount) || paymentAmount <= 0) {
+                paymentStatusMessage.textContent = 'សូមបញ្ចូលចំនួនទឹកប្រាក់ត្រឹមត្រូវ។';
+                paymentStatusMessage.style.color = '#d32f2f'; // Red for error
+                paymentStatusMessage.classList.remove('hidden');
+                return;
             }
 
-            // Event listener for the "Continue to QR Code" button
-            if (continueToQrButton) {
-                continueToQrButton.addEventListener('click', () => {
-                    console.log("Event: Continue to QR Button clicked.");
-                    const phoneNumber = phoneNumberInput ? phoneNumberInput.value.trim() : '';
-                    const location = locationInput ? locationInput.value.trim() : '';
-
-                    if (phoneNumber === '' || location === '') {
-                        console.log('Validation: សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងរបស់អ្នក។'); // Please enter your phone number and location.
-                        console.warn("Validation: Phone number or location is empty.");
-                        // You might want to display a user-friendly message in the UI here
-                        // For now, it just logs to console.
-                        return;
-                    }
-
-                    showQrCodeModal(phoneNumber, location, currentProductName);
-                });
+            if (paymentAmount < currentProductPrice) {
+                paymentStatusMessage.textContent = `ការទូទាត់មិនគ្រប់គ្រាន់ទេ។ ខ្វះ $${(currentProductPrice - paymentAmount).toFixed(2)}`;
+                paymentStatusMessage.style.color = '#d32f2f'; // Red for error
+                paymentStatusMessage.classList.remove('hidden');
             } else {
-                console.error("Error: continueToQrButton element not found, cannot attach click listener.");
+                const change = paymentAmount - currentProductPrice;
+                paymentStatusMessage.textContent = `ការទូទាត់ជោគជ័យ! ប្រាក់អាប់: $${change.toFixed(2)}`;
+                paymentStatusMessage.style.color = '#009688'; // Green for success
+                paymentStatusMessage.classList.remove('hidden');
+                paymentAmountInput.value = ''; // Clear input after successful payment
             }
+        }
 
-            /**
-             * Closes the entire ABA KHQR modal.
-             */
-            window.closeABAModal = function() { // Expose globally for onclick
-                console.log("closeABAModal called.");
-                if (abaKhqrModalOverlay) {
-                    abaKhqrModalOverlay.classList.remove('show');
-                    console.log("Modal state: abaKhqrModalOverlay has 'show' class:", abaKhqrModalOverlay.classList.contains('show'));
-                    console.log("Modal state: abaKhqrModalOverlay display style:", window.getComputedStyle(abaKhqrModalOverlay).display);
-                }
-            };
+        function openPaymentMethodModal() {
+            document.getElementById('paymentInputModal').classList.remove('show');
+            document.getElementById('paymentMethodModal').classList.add('show');
+        }
 
-            /**
-             * Simulates a payment confirmation and then triggers the print dialog.
-             * No backend interaction in this version.
-             */
-            window.simulatePaymentAndPrint = function() { // Expose globally for onclick
-                console.log("simulatePaymentAndPrint called (no backend interaction).");
-                
-                // Show payment confirmed message
-                if (paymentStatusMessage) {
-                    paymentStatusMessage.textContent = 'រួចរាល់ អ្នកបានត្រៀមខ្លួនបង់ប្រាក់ហើយ'; // Translated
-                    paymentStatusMessage.classList.remove('hidden');
-                    console.log("Payment status message displayed.");
-                }
+        function closePaymentMethodModal() {
+            document.getElementById('paymentMethodModal').classList.remove('show');
+            // Optionally, show the input modal again if the user cancels payment method selection
+            // document.getElementById('paymentInputModal').classList.add('show');
+        }
 
-                // Introduce a small delay (e.g., 500 milliseconds) before printing
-                setTimeout(() => {
-                    console.log("Triggering print dialog.");
-                    window.print();
-                }, 500); // Adjust delay as needed
-            };
+        function showABAQR() {
+            document.getElementById('paymentMethodModal').classList.remove('show');
+            document.getElementById('abaAmountDue').textContent = `ចំនួនទឹកប្រាក់ដែលត្រូវបង់: $${currentProductPrice.toFixed(2)}`;
+            document.getElementById('abaKhqrModal').classList.add('show');
+        }
 
-            // Close the modal if the user clicks outside of the modal content
-            if (abaKhqrModalOverlay) {
-                abaKhqrModalOverlay.addEventListener('click', (event) => {
-                    // Check if the click occurred directly on the overlay, not its children
-                    if (event.target === abaKhqrModalOverlay) {
-                        closeABAModal();
-                    }
-                });
-            } else {
-                console.error("Error: abaKhqrModalOverlay element not found, cannot attach click outside listener.");
+        function closeABAQR() {
+            document.getElementById('abaKhqrModal').classList.remove('show');
+            document.getElementById('paymentInputModal').classList.add('show'); // Go back to payment input
+        }
+
+        // NEW: Function to show ACLEDA QR modal
+        function showACLEDAQR() {
+            document.getElementById('paymentMethodModal').classList.remove('show');
+            document.getElementById('acledaAmountDue').textContent = `ចំនួនទឹកប្រាក់ដែលត្រូវបង់: $${currentProductPrice.toFixed(2)}`;
+            document.getElementById('acledaKhqrModal').classList.add('show');
+        }
+
+        // NEW: Function to close ACLEDA QR modal
+        function closeACLEDAQR() {
+            document.getElementById('acledaKhqrModal').classList.remove('show');
+            document.getElementById('paymentInputModal').classList.add('show'); // Go back to payment input
+        }
+
+        function printInvoice() {
+            window.print();
+        }
+
+        function showWingQR() {
+            // Replaced alert with a more user-friendly message within the modal context
+            const paymentStatusMessage = document.getElementById('paymentStatusMessage');
+            if (paymentStatusMessage) {
+                paymentStatusMessage.textContent = 'Wing KHQR កំពុងមកដល់ឆាប់ៗនេះ!'; // Wing KHQR is coming soon!
+                paymentStatusMessage.style.color = '#FFA500'; // Orange for warning
+                paymentStatusMessage.classList.remove('hidden');
             }
+            // Close the payment method modal to show the message on the input modal
+            closePaymentMethodModal();
+            openPaymentInputModal(currentProductPrice, currentProductName); // Re-open the input modal to show the message
+        }
 
-            // Close the modal if the Escape key is pressed
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && abaKhqrModalOverlay && abaKhqrModalOverlay.classList.contains('show')) {
-                    closeABAModal();
-                }
-            });
-
-            // --- Enhanced Search Functionality ---
+        // Search and Filter Functionality
+        document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('search-input');
-            console.log("Element check: searchInput:", searchInput);
             const searchButton = document.getElementById('search-button');
-            console.log("Element check: searchButton:", searchButton);
-            // Select all h2 elements with data-section-heading and all section elements with data-section-category
-            const allContentElements = document.querySelectorAll('h2[data-section-heading], section[data-section-category]');
-            console.log("Element check: allContentElements (length):", allContentElements.length);
+            const findNowButton = document.getElementById('find-now-button'); // Get the "Find Now" button
 
             if (searchButton) {
                 searchButton.addEventListener('click', performSearch);
-                console.log("Event: Search button click listener attached.");
-            } else {
-                console.error("Error: searchButton element not found, cannot attach click listener.");
             }
-
             if (searchInput) {
-                searchInput.addEventListener('keyup', (event) => {
-                    if (event.key === 'Enter') {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
                         performSearch();
                     }
                 });
-                console.log("Event: Search input keyup listener attached.");
-            } else {
-                console.error("Error: searchInput element not found, cannot attach keyup listener.");
             }
 
-            // --- Navigation Button Functions ---
-
-            /**
-             * Shows all product sections and products.
-             */
-            window.showAllContent = function() { // Expose globally for onclick
-                console.log("showAllContent called.");
-                const searchInputElem = document.getElementById('search-input');
-                if (searchInputElem) searchInputElem.value = ''; // Clear search input
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
-
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling;
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling;
-                    }
-
-                    if (headingElement) headingElement.classList.remove('hidden-section');
-                    if (sectionContainer) {
-                        sectionContainer.classList.remove('hidden-section');
-                        sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                            product.style.display = 'flex'; // Ensure all products are visible
-                        });
+            // Add event listener for the "Find Now" button
+            if (findNowButton) {
+                findNowButton.addEventListener('click', () => {
+                    // Scroll to the product sections or a specific element
+                    const productSections = document.querySelector('main');
+                    if (productSections) {
+                        productSections.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
+            }
+
+            function showAllContent() {
+                const sections = document.querySelectorAll('main section');
+                const headings = document.querySelectorAll('main h2[data-section-heading]');
+                const products = document.querySelectorAll('.product-grid-container > div');
+                const introSection = document.querySelector('section.bg-white.rounded-xl'); // Select the introduction section
+
+                // Show all sections and products
+                sections.forEach(section => section.classList.remove('hidden-section'));
+                headings.forEach(heading => heading.classList.remove('hidden-section'));
+                products.forEach(product => product.style.display = 'flex'); // Ensure products are visible
+
+                // Show the introduction section
+                if (introSection) {
+                    introSection.classList.remove('hidden-section');
+                    introSection.style.display = 'block'; // Ensure it's displayed
+                }
+
                 console.log("Content: All content shown.");
-            };
+            }
 
-            /**
-             * Filters content to show only a specific category.
-             * @param {string} category - The data-section-category value to show.
-             */
-            window.filterByCategory = function(category) { // Expose globally for onclick
-                console.log("filterByCategory called for category:", category);
-                const searchInputElem = document.getElementById('search-input');
-                if (searchInputElem) searchInputElem.value = ''; // Clear search input
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
+            window.showAllContent = showAllContent; // Make it globally accessible
 
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling;
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling;
-                    }
+            window.filterByCategory = function(category) {
+                const sections = document.querySelectorAll('main section');
+                const headings = document.querySelectorAll('main h2[data-section-heading]');
+                const introSection = document.querySelector('section.bg-white.rounded-xl'); // Select the introduction section
 
-                    const currentCategory = sectionContainer ? sectionContainer.getAttribute('data-section-category') : '';
+                // Hide introduction section when filtering
+                if (introSection) {
+                    introSection.classList.add('hidden-section');
+                    introSection.style.display = 'none'; // Ensure it's hidden
+                }
 
-                    if (currentCategory === category) {
+                sections.forEach(section => {
+                    const sectionCategory = section.getAttribute('data-section-category');
+                    const headingElement = document.querySelector(`h2[data-section-heading="${sectionCategory}"]`);
+
+                    if (sectionCategory === category) {
+                        section.classList.remove('hidden-section');
                         if (headingElement) headingElement.classList.remove('hidden-section');
-                        if (sectionContainer) {
-                            sectionContainer.classList.remove('hidden-section');
-                            // Ensure all products within the selected category are visible
-                            sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                                product.style.display = 'flex';
-                            });
-                        }
+                        // Ensure products within the filtered section are visible
+                        section.querySelectorAll('.card').forEach(product => product.style.display = 'flex');
                     } else {
+                        section.classList.add('hidden-section');
                         if (headingElement) headingElement.classList.add('hidden-section');
-                        if (sectionContainer) sectionContainer.classList.add('hidden-section');
                     }
                 });
                 console.log("Content: Filtered by category:", category);
             };
 
             function performSearch() {
-                console.log("performSearch called.");
-                const query = searchInput.value.toLowerCase().trim();
+                const query = searchInput.value.toLowerCase();
+                console.log("Content: Performing search for:", query);
 
-                allContentElements.forEach(element => {
-                    const isHeading = element.tagName === 'H2';
-                    let sectionContainer;
-                    let headingElement;
+                const sections = document.querySelectorAll('main section');
+                const introSection = document.querySelector('section.bg-white.rounded-xl'); // Select the introduction section
 
-                    if (isHeading) {
-                        headingElement = element;
-                        sectionContainer = element.nextElementSibling; // The section div/grid after the heading
-                    } else {
-                        sectionContainer = element;
-                        headingElement = element.previousElementSibling; // The h2 before the section
-                    }
+                // Hide introduction section during search
+                if (introSection) {
+                    introSection.classList.add('hidden-section');
+                    introSection.style.display = 'none'; // Ensure it's hidden
+                }
+
+                sections.forEach(section => {
+                    const sectionCategory = section.getAttribute('data-section-category');
+                    const headingElement = document.querySelector(`h2[data-section-heading="${sectionCategory}"]`);
+                    const sectionContainer = section; // The section itself is the container
 
                     let sectionShouldBeVisible = false;
-                    let anyProductMatches = false;
-
-                    if (query === '') {
-                        // If query is empty, show everything
-                        if (headingElement) headingElement.classList.remove('hidden-section');
-                        if (sectionContainer) {
-                            sectionContainer.classList.remove('hidden-section');
-                            // Ensure all products within are also visible
-                            sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md').forEach(product => {
-                                product.style.display = 'flex';
-                            });
-                        }
-                        return; // Move to the next element
-                    }
-
-                    // Check if the section heading itself matches the query
                     if (headingElement && headingElement.textContent.toLowerCase().includes(query)) {
                         sectionShouldBeVisible = true;
                     }
 
-                    // Check products within the section
-                    if (sectionContainer) {
-                        const products = sectionContainer.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md');
+                    let anyProductMatches = false;
+                    const products = section.querySelectorAll('.card');
+                    if (products.length > 0) {
                         products.forEach(product => {
                             const productName = product.querySelector('h3').textContent.toLowerCase();
                             const productDescription = product.querySelector('p').textContent.toLowerCase();
